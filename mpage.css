@@ -1,0 +1,140 @@
+@media screen and (max-width: 580px){  
+
+  .navitimapaan {
+  flex-direction: row ;
+  text-align: center; 
+}
+
+.menu  {
+  flex-direction: column;
+  gap: 9px;
+  height: 2rem;
+}
+
+.center-logo {
+  margin: 10px 0;
+}
+
+}
+
+
+body{
+    font-style: normal;
+}
+
+.navitimapaan {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;
+  width: 100vw;
+  border-radius: 0px;
+  padding: 20px 40px;
+  position: fixed;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeUp 0.5s ease-out;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }   
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navitimapaan {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+/* Menu containers */
+.menu {
+  display: flex;
+  font-size: 17px;
+  gap: 4rem;
+  text-align: center;
+}
+
+.logo .bannermn {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  text-decoration: none;
+  align-items: center;
+}
+
+/* Navigation links */
+.menu a {
+  color: rgba(0, 0, 0, 0.993);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #000000, #8d8d8d); /* cool gradient */
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.menu a:hover {
+  color: #ffffff;
+  text-shadow: #000000 0px 2px 4px;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.pagehm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 1100px; /* Increase this value for a bigger image area */
+  height: 55  vh;      /* Responsive height, adjust as needed */
+  text-align: center;
+  padding: 0 20px;
+  animation: fadeUp 0.5s ease-out;
+  background-image: url(acrylic-brush-stroke-background-light-gray-wallpaper-image.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pagehm .content {
+  padding: 32px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  max-width: 1500px;
+  width: 100%;
+  font-size: 30px;
+}
+.hmimg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
