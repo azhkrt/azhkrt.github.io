@@ -1,88 +1,207 @@
-@media screen and (max-width: 580px){  
+html {
+  scroll-behavior: smooth;
+}
 
+@media screen and (max-width: 900px) {
   .navitimapaan {
-  flex-direction: row ;
-  text-align: center; 
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+  .logo {
+    margin-bottom: 10px;
+  }
+  .menu {
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu a {
+    padding: 8px 0;
+    width: auto;
+    text-align: center;
+  }
 }
 
-.menu  {
-  flex-direction: column;
-  gap: 9px;
-  height: 2rem;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-.center-logo {
-  margin: 10px 0;
+.page-anim-wrapper {
+  opacity: 0;
+  filter: blur(8px);
+  animation: bodyFadeIn 1.5s cubic-bezier(.4,0,.2,1) forwards;
 }
 
-}
-
-
-body{
-    font-style: normal;
+@keyframes bodyFadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  80% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 .navitimapaan {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  display: flex;
-  justify-content: space-around; 
-  align-items: center;
-  width: 100vw;
-  border-radius: 0px;
-  padding: 20px 40px;
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 40px;
+  border-radius: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(94, 94, 94, 0.288);
   font-family: 'Segoe UI', sans-serif;
-  animation: fadeUp 0.5s ease-out;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   text-align: center;
   flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(-30px);
+  overflow: hidden;
+  filter: blur(8px);
+  animation: bannerFadeUp 1.2s 1.1s cubic-bezier(.4,0,.2,1) forwards;
+  will-change: opacity, transform, filter;
 }
 
-@keyframes fadeUp {
-    0% {
-        opacity: 0;
-        transform: translateY(15px);
-    }   
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.navitimapaan .banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0);
+  pointer-events: none;
 }
 
-.navitimapaan {
+.navitimapaan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6; 
+  background: url(11773487_4845950.jpg) center/cover no-repeat;
+  background-size: cover, auto 100px;
+  background-position: bottom left, top left;
+  background-repeat: no-repeat, repeat-x;
+}
+
+/* Enhanced shimmer effect for cooler banner */
+.navitimapaan::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: -100%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 25%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0.3) 75%,
+    rgba(255,255,255,0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  animation: shimmer 4s ease-in-out infinite;
+  transform: skewX(-25deg);
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 110%; }
+  100% { left: -100%; }
+}
+
+@keyframes bannerFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+    filter: blur(8px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(5px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Enhanced hover effect for banner */
+.navitimapaan:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+} 
+
+.nav-content {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px;
-  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
-/* Menu containers */
 .menu {
   display: flex;
   font-size: 17px;
   gap: 4rem;
   text-align: center;
+  z-index: 2;
 }
 
 .logo .bannermn {
   font-size: 2rem;
   font-weight: bold;
-  color: rgb(0, 0, 0);
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  color: #222;
+  text-shadow: 0 2px 8px #fff, 2px 2px 8px #000;
   text-decoration: none;
   align-items: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
 }
 
-/* Navigation links */
+/* Enhanced logo hover effect */
+.logo .bannermn:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
 .menu a {
   color: rgba(0, 0, 0, 0.993);
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: 
+    color 0.3s ease,
+    text-shadow 0.3s,
+    transform 0.2s cubic-bezier(.4,0,.2,1);
   position: relative;
   padding-bottom: 4px;
 }
@@ -94,14 +213,15 @@ body{
   bottom: 0;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, #000000, #8d8d8d); /* cool gradient */
+  background: linear-gradient(90deg, #000000, #8d8d8d);
   border-radius: 2px;
   transition: width 0.3s cubic-bezier(.4,0,.2,1);
 }
 
 .menu a:hover {
   color: #ffffff;
-  text-shadow: #000000 0px 2px 4px;
+  text-shadow: 0 4px 16px #000, 0 0px 8px #8d8d8d;
+  transform: scale(1.08);
 }
 
 .menu a:hover::after {
@@ -113,28 +233,82 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 1100px; /* Increase this value for a bigger image area */
-  height: 55  vh;      /* Responsive height, adjust as needed */
+  background-image: url('sadgirl-sakura.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  height: auto;
   text-align: center;
   padding: 0 20px;
+  width: 100%;
   animation: fadeUp 0.5s ease-out;
-  background-image: url(acrylic-brush-stroke-background-light-gray-wallpaper-image.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .pagehm .content {
-  padding: 32px 24px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  max-width: 1500px;
+  padding: 50px 10px;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(119, 119, 119, 0.637);
+  max-width: 1000px;
   width: 100%;
-  font-size: 30px;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.233);  
+  margin-bottom: 50px;
 }
+
 .hmimg {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgb(199, 199, 199);
 }
+
+#aboutme {
+  padding: 10px 20px;
+  min-height: 100vh;
+}
+/*
+.biodata-section {
+  padding-top: 0px;
+  margin: 99px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.biodata-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.biodata-card {
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 1.2rem 1.8rem;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.biodata-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.biodata-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.biodata-value {
+  color: #444;
+}
+*/
