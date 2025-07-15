@@ -15,7 +15,7 @@
     </div>
     <div class="menu">
       <a href="#aboutme">About me</a>
-      <a href="#">Contact</a>
+      <a href="#Contact">Contact</a>
       <a href="#">Project</a>
       <a href="#">Gallery</a>
     </div>
@@ -25,56 +25,45 @@
   <section class="pagehm">
     <div class="content">
       <h1>Welcome to Azhkrt</h1>
-      <p>My real Name is </p>
-      <p>This is my prototype page for my demonstration of html, css, and js</p>
-      <p>and also my biodata</p>
+      <p>My real Name is Ahmad Zaky Fathurrahman</p>
+      <p><b>This is my prototype page for my demonstration of html, css, and js</b></p>
+      <p>:P</p>
     </div>
   </section>
   <section id="aboutme">
-    <div class="" style="display: flex; flex-direction: column; align-items: center;">
-      <h2>About Me</h2>
-      <p>My name is Azhkrt, but sadly thats not my real name</p>
-      <p>im an 16 y/o guy who has slightly mental illnes and autism</p>
-      <p>from Indonesia, perhaps I can move to another country</p>
-      <br>
-      <br>
-      <h2>Hobbies</h2>
-      <p>I like reading mangas, exploring new things</p>
-      <p>and also playing video games</p>
+    <h2>About Me</h2>
+        <div class="sections-grid">
+            <!-- Myself Section -->
+            <div class="section-card" id="myself">
+                <div class="card-content">
+                    <h2>Myself</h2>
+                    <p>Hover to know more about me</p>
+                </div>
+            </div>
+            <!-- My Hobbies Section -->
+            <div class="section-card" id="hobbies">
+                <div class="card-content">
+                    <h2>My Hobbies</h2>
+                    <p>Hover to see what I enjoy</p>
+                </div>
+            </div>
+            <!-- Fact About Me Section -->
+            <div class="section-card" id="facts">
+                <div class="card-content">
+                    <h2>Fact About Me</h2>
+                    <p>Hover to discover interesting facts</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-display" id="selected-content">
+            <p>Select a section above to view its content</p>
+        </div>
     </div>
-  </section><!---
-<section class="biodata-section">
-  <h2>Biodata</h2>
-  <div class="biodata-grid">
-    <div class="biodata-card">
-      <span class="biodata-icon">👤</span>
-      <span class="biodata-label">Name:</span>
-      <span class="biodata-value">Azhkrt</span>
-    </div>
-    <div class="biodata-card">
-      <span class="biodata-icon">🎂</span>
-      <span class="biodata-label">Age:</span>
-      <span class="biodata-value">16</span>
-    </div>
-    <div class="biodata-card">
-      <span class="biodata-icon">🌏</span>
-      <span class="biodata-label">Country:</span>
-      <span class="biodata-value">Indonesia</span>
-    </div>
-    <div class="biodata-card">
-      <span class="biodata-icon">🧩</span>
-      <span class="biodata-label">Condition:</span>
-      <span class="biodata-value">Autism</span>
-    </div>
-    <div class="biodata-card">
-      <span class="biodata-icon">📚</span>
-      <span class="biodata-label">Hobbies:</span>
-      <span class="biodata-value">Manga, Games, Exploring</span>
-    </div>
-  </div>
-</section>
-</div>
--->
+    
+  </section>
+  <section id="Contact">
+    <h2>Contact me</h2>
+  </section>
 <script src="script.js"></script>
 </body>
 </html>

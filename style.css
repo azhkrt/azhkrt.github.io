@@ -268,47 +268,272 @@ section[id] {
 }
 
 #aboutme {
-  padding: 10px 20px;
+
   min-height: 100vh;
-}
-/*
-.biodata-section {
-  padding-top: 0px;
-  margin: 99px auto;
-  max-width: 800px;
   text-align: center;
+  text-decoration: none;
 }
 
-.biodata-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  margin-top: 1.5rem;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
-.biodata-card {
-  background: rgba(255,255,255,0.7);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 1.2rem 1.8rem;
-  min-width: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.section-card {
+    position: relative; /* Ensure this is set */
+    cursor: pointer; /* Keep cursor pointer for visual cue */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Keep existing hover transition */
+}
+.section-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
 }
 
-.biodata-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+#myself::before {
+    background-image: url(JwXYYNuH.jpeg);
 }
 
-.biodata-label {
-  font-weight: bold;
-  color: #333;
+#hobbies::before {
+    background-image: url('062vZUHO.jpeg');
 }
 
-.biodata-value {
-  color: #444;
+#facts::before {
+    background-image: url('_🪽\ dollcore\,\ angelcore.jpeg');
 }
-*/
+.section-card:hover {
+    transform: translateY(-5px); /* Example: lift card slightly */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Example: enhance shadow */
+}
+.section-card.active {
+    /* Remove or modify styles that make it look 'clicked' */
+    /* For example, if it adds a border or changes background */
+    border: none; /* Example: remove border */
+    box-shadow: none; /* Example: remove shadow */
+}
+.section-card.active::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 5px solid #6B46C1;
+    border-radius: 12px; /* Slightly larger than card radius */
+    animation: borderPulse 2s infinite;
+    z-index: -1;
+}
+@keyframes borderPulse {
+    0% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.02); }
+    100% { opacity: 0.8; transform: scale(1); }
+}
+.card-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    color: #333;
+}
+
+.card-content h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: #000000da;
+    font-size: 1rem;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+
+.content-display {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin-top: 0;
+    transition: opacity 0.3s ease, height 0.3s ease, padding 0.3s ease, margin-top 0.3s ease;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .sections-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.content-icon {
+    font-size: 2rem;
+    color: #6B46C1;
+    margin-bottom: 1rem;
+}
+
+.content-text h3 {
+    font-size: 1.8rem;
+    color: #6B46C1;
+    margin-bottom: 1rem;
+}
+
+.content-text p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hobbies-title, .facts-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    color: #4299E1;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.facts-title {
+    color: #000000;
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.hobby-item, .fact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.hobby-item {
+    background-color: #EBF8FF;
+}
+
+.hobby-item:hover {
+    background-color: #BEE3F8;
+}
+
+.fact-item {
+    background-color: #F0FFF4;
+}
+
+.fact-item:hover {
+    background-color: #C6F6D5;
+}
+
+.hobby-icon, .fact-icon {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.hobby-icon {
+    background-color: #90CDF4;
+    color: white;
+}
+
+.fact-icon {
+    background-color: #68D391;
+    color: white;
+}
+
+.hobby-text h4, .fact-text h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: #2D3748;
+}
+
+.hobby-text p, .fact-text p {
+    font-size: 0.9rem;
+    color: #4A5568;
+}
+
+.facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}   
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(10px); }
+}
+.fade-out {
+    animation: fadeOut 0.4s ease forwards; /* Match duration with JS */
+}
+/* General section styles */
+section {
+    margin: 0; /* Remove default margin */
+    padding: 20px 0; /* Adjust padding as needed */
+}
+/* Specific styles for the About Me section */
+#aboutme {
+    margin-bottom: 10px; /* Adjust this value to reduce space below About Me */
+}
+/* Styles for the Contact section */
+#Contact {
+    margin-top: -300px; /* Ensure no extra space above */
+    padding: 20px 0; /* Adjust padding as needed */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.content-display.show {
+    opacity: 1;
+    height: auto; /* Expand to fit content */
+    padding: 2rem; /* Add padding */
+    margin-top: 3rem; /* Add margin */
+}
+
