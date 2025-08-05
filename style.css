@@ -302,7 +302,7 @@ section[id] {
 }
 
 #myself::before {
-    background-image: url(JwXYYNuH.jpeg);
+    background-image: url('JwXYYNuH.jpeg');
 }
 
 #hobbies::before {
