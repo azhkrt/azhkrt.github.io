@@ -11,6 +11,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.section-card');
     const contentDisplay = document.getElementById('selected-content');
@@ -72,58 +73,69 @@ document.addEventListener('DOMContentLoaded', function() {
         `,
         facts: `
             <div class="content-wrapper">
-                <h3 class="facts-title"><i class="fas fa-lightbulb"></i>Wait i didnt fill ths yet</h3>
+                <h3 class="facts-title"><i class="fas fa-lightbulb"></i> Wait i didnt fill this yet</h3>
                 <p>Nothing to see here yet! :(</p>
             </div>
         `
     };
 
+    let currentSection = null;
     let hideTimeout = null;
-    let isContentHovered = false;
-    let isCardHovered = false;
 
     function showContent(sectionId) {
+        // Clear any pending hide timeout
         if (hideTimeout) {
             clearTimeout(hideTimeout);
             hideTimeout = null;
         }
+
+        // If same section, don't reload
+        if (currentSection === sectionId) {
+            return;
+        }
+
+        currentSection = sectionId;
+        
+        // Update content
         contentDisplay.innerHTML = contentData[sectionId];
-        contentDisplay.style.opacity = '1';
-        contentDisplay.style.height = 'auto';
-        contentDisplay.style.padding = '2rem';
-        contentDisplay.style.marginTop = '3rem';
+        
+        // Show with animation
+        contentDisplay.classList.add('show');
     }
 
     function hideContent() {
+        // Clear timeout if exists
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+        }
+
+        // Set timeout to hide
         hideTimeout = setTimeout(() => {
-            if (!isContentHovered && !isCardHovered) {
-                contentDisplay.style.opacity = '0';
-                contentDisplay.style.height = '0';
-                contentDisplay.style.padding = '0';
-                contentDisplay.style.marginTop = '0';
-                setTimeout(() => {
-                    contentDisplay.innerHTML = '<p>Ooopss... You find me! :P</p>' + '<p>This is a bug, and im to lazy to fix it </p>' + '<p><b>Hover again to see the content!</b></p>';
-                    contentDisplay.style.opacity = '1';
-                }, 300); // Match to your CSS transition duration (3s)
-            }
-        }, 300); 
+            contentDisplay.classList.remove('show');
+            currentSection = null;
+            
+            // Reset content after animation
+            setTimeout(() => {
+                if (!currentSection) {
+                    contentDisplay.innerHTML = '<p>Hover over a card above to see its content</p>';
+                }
+            }, 300);
+        }, 200);
     }
 
+    // Add event listeners to cards
     sections.forEach(section => {
         section.addEventListener('mouseenter', () => {
-            isCardHovered = true;
             showContent(section.id);
         });
 
         section.addEventListener('mouseleave', () => {
-            isCardHovered = false;
-            // Slight delay to allow moving into contentDisplay without hiding
             hideContent();
         });
     });
 
+    // Keep content visible when hovering over it
     contentDisplay.addEventListener('mouseenter', () => {
-        isContentHovered = true;
         if (hideTimeout) {
             clearTimeout(hideTimeout);
             hideTimeout = null;
@@ -131,8 +143,75 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     contentDisplay.addEventListener('mouseleave', () => {
-        isContentHovered = false;
         hideContent();
     });
 
+    // Initialize with default message
+    contentDisplay.innerHTML = '<p>Hover over a card above to see its content</p>';
+});
+
+// Contact Form Handler
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Get submit button
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Change button text to loading
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate sending (replace with actual backend later)
+            setTimeout(() => {
+                // Success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                submitBtn.style.background = 'linear-gradient(135deg, #ffffffff 0%, #000000ff 100%)';
+                
+                // Show alert
+                alert(`Thank you, ${formData.name}! Your message has been received.\n\nI'll get back to you at ${formData.email} soon! 😊`);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = 'linear-gradient(135deg, #000000ff 0%, #7e7e7eff 100%)';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }, 1500);
+            
+            // TODO: Replace with actual form submission to backend
+            // Example using fetch API:
+            /*
+            fetch('your-backend-endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success
+            })
+            .catch(error => {
+                // Handle error
+            });
+            */
+        });
+    }
 });

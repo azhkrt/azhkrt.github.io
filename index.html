@@ -16,6 +16,25 @@
     <div class="menu">
       <a href="#aboutme">About me</a>
       <a href="#Contact">Contact</a>
+      <a href="#">Project</a><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Azhkrt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="cruel.jpg" type="img">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="navitimapaan">
+  <div class="banner-overlay"></div>
+  <div class="nav-content">
+    <div class="logo">
+      <a href="index.html" class="bannermn">Azhkrt</a>
+    </div>
+    <div class="menu">
+      <a href="#aboutme">About me</a>
+      <a href="#Contact">Contact</a>
       <a href="#">Project</a>
       <a href="#">Gallery</a>
     </div>
@@ -59,11 +78,104 @@
             <p>Select a section above to view its content</p>
         </div>
     </div>
-    
-  </section>
-  <section id="Contact">
-    <h2>Contact me</h2>
-  </section>
+<section id="Contact">
+    <div class="contact-container">
+        <h2 class="contact-title">Get In Touch</h2>
+        <p class="contact-subtitle">Feel free to reach out! I'd love to hear from you.</p>
+        
+        <div class="contact-content">
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i> Name
+                        </label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">
+                            <i class="fas fa-tag"></i> Subject
+                        </label>
+                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fas fa-comment-dots"></i> Message
+                        </label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Info & Social Media -->
+            <div class="contact-info-wrapper">
+                <div class="contact-info-box">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <a href="mailto:mahouisgood@gmail.com">azhkrt@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <a href="tel:+62123456789">+62 123 456 789</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media Links -->
+                <div class="social-links">
+                    <h3>Connect With Me</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com/azhkrt" target="_blank" class="social-icon github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://instagram.com/azhkrt_" target="_blank" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/forottaku" target="_blank" class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://discord.com/users/tobeexist" target="_blank" class="social-icon discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <script src="script.js"></script>
 </body>
 </html>
