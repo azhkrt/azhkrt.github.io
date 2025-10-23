@@ -310,7 +310,7 @@ section[id] {
 }
 
 #facts::before {
-    background-image: url('labaw.jpg');
+    background-image: url('labaw.jpeg');
 }
 .section-card:hover {
     transform: translateY(-5px); /* Example: lift card slightly */
