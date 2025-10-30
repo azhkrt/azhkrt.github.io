@@ -537,7 +537,7 @@ section {
     margin-top: 50px;
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
 #Contact.fade-in {
@@ -559,7 +559,7 @@ section {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
 }
 
 #Contact.fade-in .contact-title {
@@ -574,7 +574,7 @@ section {
     margin-bottom: 3rem;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
 }
 
 #Contact.fade-in .contact-subtitle {
@@ -597,7 +597,7 @@ section {
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     opacity: 0;
     transform: translateX(-50px);
-    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+    transition: opacity 1.5s ease-out 0.4s, transform 1.5s ease-out 0.4s;
 }
 
 #Contact.fade-in .contact-form-wrapper {
