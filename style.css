@@ -599,7 +599,7 @@ section {
     z-index: 0;
     opacity: 0.3;
     background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.473) 1px, transparent 1px);
     background-size: 30px 30px;
     pointer-events: none;
 }
@@ -724,7 +724,7 @@ section {
     height: 100%;
     color: #333;
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(1px);
     transition: background 0.3s ease;
 }
 
