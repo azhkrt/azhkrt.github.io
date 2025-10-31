@@ -905,7 +905,7 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #000000;
     background: white;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
@@ -929,7 +929,7 @@ section {
     justify-content: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px rgba(109, 109, 109, 0.4);
 }
 
 .submit-btn:hover {
@@ -999,7 +999,7 @@ section {
 }
 
 .info-text a:hover {
-    color: #667eea;
+    color: #000000;
 }
 
 /* Social Links */
