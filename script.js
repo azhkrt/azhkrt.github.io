@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 // Success message
                 submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                submitBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+                submitBtn.style.background = 'linear-gradient(135deg, #5f30ccff 0%, #4f38a1ff 100%)';
                 
                 // Show alert
                 alert(`Thank you, ${formData.name}! Your message has been received.\n\nI'll get back to you at ${formData.email} soon! 😊`);
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Reset button after 3 seconds
                 setTimeout(() => {
                     submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    submitBtn.style.background = 'linear-gradient(135deg, #adadadff 0%, #111111ff 100%)';
                     submitBtn.disabled = false;
                 }, 3000);
             }, 1500);
