@@ -1,163 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Azhkrt</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" href="cruel.jpg" type="img">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>azhkrt — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<div class="navitimapaan">
-  <div class="banner-overlay"></div>
-  <div class="nav-content">
-    <div class="logo">
-      <a href="index.html" class="bannermn">Azhkrt</a>
-    </div>
-    <div class="menu">
-      <a href="#aboutme">About me</a>
-      <a href="#Contact">Contact</a>
-      <a href="#">Project</a>
-      <a href="#">Gallery</a>
-    </div>
+  <div class="page-anim-wrapper">
+    <!-- NAVBAR + BURGER MENU -->
+    <header class="navbar">
+      <div class="nav-content">
+        <a href="#home" class="logo">azhkrt.</a>
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav class="menu" id="navMenu">
+          <a href="#home">Home</a>
+          <a href="#aboutme">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#footer">Links</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="hero-card">
+        <h1>Hi, I'm Zax.</h1>
+        <p>IT Support Specialist & Web Tinkerer — building clean interfaces and experimenting with systems.</p>
+        <a href="#projects" class="btn-primary">Lihat Projects</a>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="aboutme" class="about">
+      <div class="aboutme-dots"></div>
+      <h2>About Me</h2>
+      <div class="sections-grid">
+        <div class="section-card" id="myself">
+          <div class="card-content">
+            <h3>Myself</h3>
+            <p>Klik untuk kenalan singkat</p>
+          </div>
+        </div>
+        <div class="section-card" id="hobbies">
+          <div class="card-content">
+            <h3>Hobbies</h3>
+            <p>Klik untuk lihat minat & hobi</p>
+          </div>
+        </div>
+        <div class="section-card" id="facts">
+          <div class="card-content">
+            <h3>Setup & Facts</h3>
+            <p>Klik untuk trivia singkat</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="selected-content" class="content-display">
+        <p>Klik salah satu kartu di atas untuk melihat detailnya.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+      <h2>Selected Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>Cloud 9 Web App</h3>
+          <p>Aplikasi web restoran berbasis Laravel & Blade dengan sistem manajemen menu dan reservasi.</p>
+          <div class="tags"><span>Laravel</span><span>PHP</span><span>Blade</span></div>
+          <a href="https://github.com/azhkrt" target="_blank" rel="noopener">Source Code →</a>
+        </article>
+        <article class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>Website personal statis dengan estetika glassmorphism monokrom dan interaktivitas vanilla JS.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a href="https://github.com/azhkrt/azhkrt.github.io" target="_blank" rel="noopener">Repository →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER (CONTACTS & COPYRIGHT) -->
+    <footer id="footer" class="site-footer">
+      <div class="footer-socials">
+        <a href="https://github.com/azhkrt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="copyright">© 2026 azhkrt. Built from scratch.</p>
+    </footer>
   </div>
-</div>
-<div class="page-anim-wrapper">
-  <section class="pagehm">
-    <div class="content">
-      <h1>Welcome to Azhkrt</h1>
-      <p>My real Name is Ahmad Zaky Fathurrahman</p>
-      <p><b>This is my prototype page for my demonstration of html, css, and js</b></p>
-      <p>:P</p>
-    </div>
-  </section>
-  <section id="aboutme">
-    <h2>About Me</h2>
-        <div class="sections-grid">
-            <!-- Myself Section -->
-            <div class="section-card" id="myself">
-                <div class="card-content">
-                    <h2>Myself</h2>
-                    <p>Hover to know more about me</p>
-                </div>
-            </div>
-            <!-- My Hobbies Section -->
-            <div class="section-card" id="hobbies">
-                <div class="card-content">
-                    <h2>My Hobbies</h2>
-                    <p>Hover to see what I enjoy</p>
-                </div>
-            </div>
-            <!-- Fact About Me Section -->
-            <div class="section-card" id="facts">
-                <div class="card-content">
-                    <h2>Fact About Me</h2>
-                    <p>Hover to discover interesting facts</p>
-                </div>
-            </div>
-        </div>
-        <div class="content-display" id="selected-content">
-            <p>Select a section above to view its content</p>
-        </div>
-    </div>
-<section id="Contact">
-    <div class="contact-container">
-        <h2 class="contact-title">Get In Touch</h2>
-        <p class="contact-subtitle">Feel free to reach out! I'd love to hear from you.</p>
-        
-        <div class="contact-content">
-            <!-- Contact Form -->
-            <div class="contact-form-wrapper">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">
-                            <i class="fas fa-user"></i> Name
-                        </label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">
-                            <i class="fas fa-envelope"></i> Email
-                        </label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">
-                            <i class="fas fa-tag"></i> Subject
-                        </label>
-                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">
-                            <i class="fas fa-comment-dots"></i> Message
-                        </label>
-                        <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-            </div>
-            
-            <!-- Contact Info & Social Media -->
-            <div class="contact-info-wrapper">
-                <div class="contact-info-box">
-                    <h3>Contact Information</h3>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div class="info-text">
-                            <h4>Email</h4>
-                            <a href="mailto:mahouisgood@gmail.com" target="_blank">azhkrt@gmail.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="info-text">
-                            <h4>Location</h4>
-                            <a href="https://www.google.com/maps/place/Jl.+Cakra,+RW.1,+Semper+Tim.,+Kec.+Cilincing,+Jkt+Utara,+Daerah+Khusus+Ibukota+Jakarta+14130/@-6.1097098,106.9233338,17z/data=!3m1!4b1!4m6!3m5!1s0x2e6a203d24c5bd3d:0x98b0e9f82e71269a!8m2!3d-6.1097098!4d106.9259087!16s%2Fg%2F11hd51pmvm?entry=ttu&g_ep=EgoyMDI1MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Jakarta, Indonesia</a>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <div class="info-text">
-                            <h4>Whatsapph</h4>
-                            <a href="https://wa.me/6289644546990" target="_blank">+62 896 4454 6990 (ID)</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Social Media Links -->
-                <div class="social-links">
-                    <h3>Connect With Me</h3>
-                    <div class="social-icons">
-                        <a href="https://github.com/azhkrt" target="_blank" class="social-icon github">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon linkedin">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://instagram.com/azhkrt_" target="_blank" class="social-icon instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://twitter.com/forottaku" target="_blank" class="social-icon twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://discord.com/users/tobeexist" target="_blank" class="social-icon discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<script src="script.js"></script>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

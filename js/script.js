@@ -248,3 +248,35 @@ window.addEventListener('load', function() {
     observer.observe(contactSection);
     console.log('Observer started');
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Burger Menu Toggle
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  burgerBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+  });
+
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navMenu.classList.remove('open'));
+  });
+
+  // 2. Click-based About Me Cards (Ramah HP & Desktop)
+  const cards = document.querySelectorAll('.section-card');
+  const contentDisplay = document.getElementById('selected-content');
+
+  const contentData = {
+    myself: `<h3>About Myself</h3><p>Lulusan TKJ yang sehari-hari berkutat di dunia IT Support, infrastruktur jaringan, dan ngulik tampilan web.</p>`,
+    hobbies: `<h3>My Hobbies</h3><p>Ngoprek proyek web, baca visual novel & manga, dengerin maidcore/alt-rock, dan main game simulasi.</p>`,
+    facts: `<h3>Setup & Trivia</h3><p>Daily driver Windows LTSC, pencinta audio wired IEM, dan selalu nyari cara bikin UI kelihatan clean tapi berkarakter.</p>`
+  };
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      contentDisplay.innerHTML = contentData[card.id] || '';
+    });
+  });
+});
