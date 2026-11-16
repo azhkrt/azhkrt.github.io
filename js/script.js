@@ -1,42 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Burger Menu Toggle
+  // =========================================
+  // 1. BURGER MENU TOGGLE
+  // =========================================
   const burgerBtn = document.getElementById('burgerBtn');
   const navMenu = document.getElementById('navMenu');
 
-  burgerBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
-  });
+  if (burgerBtn && navMenu) {
+    burgerBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
 
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navMenu.classList.remove('open'));
-  });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navMenu.classList.remove('open'));
+    });
+  }
 
-  // 2. Click-based About Me Cards (Ramah HP & Desktop)
+  // =========================================
+  // 2. ABOUT ME 4 INTERACTIVE CARDS
+  // =========================================
   const cards = document.querySelectorAll('.section-card');
   const contentDisplay = document.getElementById('selected-content');
 
   const contentData = {
-    myself: `<h3>About Myself</h3><p>A Computer Engineering and Networking (TKJ) graduate who spends their days immersed in IT support, network infrastructure, and tinkering with web design.</p>`,
-    hobbies: `<h3>My Hobbies</h3><p>Tinkering with web projects, reading visual novels & manga, listening to maidcore/alt-rock, and playing simulation games.</p>`,
-    facts: `<h3>Setup & Trivia</h3><p>Uses Windows LTSC as a daily driver, a fan of wired IEMs for audio, and always looking for ways to make the UI look clean yet full of character.</p>`,
-    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, 2000s visual novel atmosphere, shoegaze / digicore soundscapes, and clean dark interfaces.</p>`
+    myself: `<h3>About Myself</h3><p>Lulusan TKJ yang sehari-hari berkutat di dunia IT Support, infrastruktur jaringan, dan ngulik tampilan web.</p>`,
+    hobbies: `<h3>My Hobbies</h3><p>Ngoprek proyek web, baca visual novel & manga, dengerin maidcore/alt-rock, dan main game simulasi.</p>`,
+    facts: `<h3>Setup & Trivia</h3><p>Daily driver Windows LTSC, pencinta audio wired IEM, dan selalu nyari cara bikin UI kelihatan clean tapi berkarakter.</p>`,
+    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, 2000s visual novel atmosphere, shoegaze / digicore soundscapes, dan clean dark interfaces.</p>`
   };
 
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-      cards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      contentDisplay.innerHTML = `<div class="content-fade">${contentData[card.id] || ''}</div>`;
+  if (cards.length && contentDisplay) {
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        contentDisplay.innerHTML = `<div class="content-fade">${contentData[card.id] || ''}</div>`;
+      });
     });
-  });
-});
+  }
 
-// 3. 3D Cursor Tilt Effect pada Project Cards (Desktop / Pointer devices)
+  // =========================================
+  // 3. 3D CURSOR TILT ON PROJECT CARDS
+  // =========================================
   const projectCards = document.querySelectorAll('.project-card');
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-  if (isFinePointer) {
-    const maxTilt = 8; // Derajat kemiringan maksimal (makin besar makin ekstrem)
+  if (projectCards.length && isFinePointer) {
+    const maxTilt = 8;
 
     projectCards.forEach(card => {
       card.addEventListener('mouseenter', () => {
@@ -48,11 +57,9 @@ cards.forEach(card => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        // Update koordinat spotlight glow
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
 
-        // Hitung rotasi X & Y berdasarkan jarak kursor dari titik tengah card
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         const rotateX = ((y - centerY) / centerY) * -maxTilt;
@@ -62,11 +69,15 @@ cards.forEach(card => {
       });
 
       card.addEventListener('mouseleave', () => {
-        // Kembalikan ke posisi datar dengan transisi smooth
         card.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.4s ease';
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
       });
-      // 4. Interactive Skill Pills Inspector
+    });
+  }
+
+  // =========================================
+  // 4. INTERACTIVE SKILL PILLS INSPECTOR
+  // =========================================
   const skillPills = document.querySelectorAll('.skill-pill');
   const skillTitle = document.getElementById('skillTitle');
   const skillCat = document.getElementById('skillCat');
@@ -77,69 +88,73 @@ cards.forEach(card => {
     ad: {
       title: 'Active Directory',
       cat: 'Infrastructure',
-      desc: 'Managing the Organizational Unit (OU) structure, creating and resetting corporate user accounts, joining devices to the domain, and implementing basic client access policies.'
+      desc: 'Mengelola struktur Organizational Unit (OU), pembuatan & reset akun user korporat, penggabungan perangkat ke domain (domain join), serta penerapan kebijakan dasar akses klien.'
     },
     net: {
       title: 'Network Configuration',
       cat: 'Networking',
-      desc: 'Static/DHCP IP configuration, basic subnetting, checking routing paths, crimping LAN cables, and troubleshooting office network connections as well as client devices.'
+      desc: 'Konfigurasi IP static/DHCP, subnetting dasar, pengecekan jalur routing, crimping kabel LAN, serta troubleshooting koneksi jaringan kantor maupun perangkat klien.'
     },
     win: {
       title: 'Windows Server & LTSC',
       cat: 'Operating System',
-      desc: 'Administration of corporate Windows environments (Windows 10/11 Pro & LTSC), optimization of system services, management of folder-sharing permissions, and maintenance of OS stability.'
+      desc: 'Administrasi lingkungan Windows korporat (Windows 10/11 Pro & LTSC), optimasi service sistem, manajemen permission folder sharing, dan pemeliharaan stabilitas OS.'
     },
     prov: {
       title: 'System Provisioning',
       cat: 'Deployment',
-      desc: 'Setting up a new PC/laptop from scratch and making it ready for use: installing the OS, drivers, and standard office software, configuring security settings, and handing it over to the user.'
+      desc: 'Menyiapkan unit PC/laptop baru dari nol hingga siap pakai: instalasi OS, driver, standar software kantor, konfigurasi keamanan, hingga serah terima ke user.'
     },
     hw: {
       title: 'Hardware Troubleshooting',
       cat: 'IT Support',
-      desc: 'Diagnosis of PC and laptop component issues (RAM, NVMe storage, thermal, power), spare part replacement, and routine preventive maintenance.'
+      desc: 'Diagnosa kerusakan komponen PC & laptop (RAM, storage NVMe, thermal, power), penggantian sparepart, serta preventive maintenance rutin.'
     },
     htmlcss: {
       title: 'HTML5 & CSS3',
       cat: 'Frontend',
-      desc: 'Building semantic web page structures, responsive layouts using CSS Grid & Flexbox, and applying modern styling such as glassmorphism and keyframe animations.'
+      desc: 'Membangun struktur halaman web semantik, layout responsif dengan CSS Grid & Flexbox, serta styling modern seperti glassmorphism dan animasi keyframe.'
     },
     js: {
       title: 'JavaScript (Vanilla)',
       cat: 'Frontend',
-      desc: 'DOM manipulation for dynamic interactions (such as interactive cards and 3D tilt effects in this portfolio), event handling, and interface logic—all without relying on heavy frameworks.'
+      desc: 'Manipulasi DOM untuk interaksi dinamis (seperti kartu interaktif dan efek 3D tilt di portfolio ini), event handling, dan logika antarmuka tanpa bergantung framework berat.'
     },
     laravel: {
       title: 'PHP & Laravel',
       cat: 'Backend / Fullstack',
-      desc: 'Development of dynamic web applications using the Laravel MVC architecture, routing, Blade templating, and relational database integration.'
+      desc: 'Pengembangan aplikasi web dinamis menggunakan arsitektur MVC Laravel, routing, Blade templating, serta integrasi database relasional.'
     },
     git: {
       title: 'Git & GitHub',
       cat: 'Workflow',
-      desc: 'Version control for tracking code changes, managing repository branches, and deploying static projects using GitHub Pages.'
+      desc: 'Version control untuk melacak perubahan kode, manajemen branch repository, serta deployment proyek statis menggunakan GitHub Pages.'
     }
   };
 
-  skillPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const key = pill.getAttribute('data-skill');
-      const data = skillData[key];
-      if (!data) return;
+  if (skillPills.length && skillDetailBox) {
+    skillPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const key = pill.getAttribute('data-skill');
+        const data = skillData[key];
+        if (!data) return;
 
-      skillPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
+        skillPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
 
-      // Reset animasi fade halus tiap ganti skill
-      skillDetailBox.classList.remove('content-fade');
-      void skillDetailBox.offsetWidth;
-      skillTitle.textContent = data.title;
-      skillCat.textContent = data.cat;
-      skillDesc.textContent = data.desc;
-      skillDetailBox.classList.add('content-fade');
+        skillDetailBox.classList.remove('content-fade');
+        void skillDetailBox.offsetWidth;
+        if (skillTitle) skillTitle.textContent = data.title;
+        if (skillCat) skillCat.textContent = data.cat;
+        if (skillDesc) skillDesc.textContent = data.desc;
+        skillDetailBox.classList.add('content-fade');
+      });
     });
-  });
-  // 5. Sigilcore Side Rails Scroll Recoil Physics
+  }
+
+  // =========================================
+  // 5. SIGILCORE SIDE RAILS SCROLL RECOIL
+  // =========================================
   const leftRail = document.querySelector('.sigil-left');
   const rightRail = document.querySelector('.sigil-right');
   const emblems = document.querySelectorAll('.sigil-emblem');
@@ -154,20 +169,17 @@ cards.forEach(card => {
       const delta = currentScrollY - lastScrollY;
       lastScrollY = currentScrollY;
 
-      // Tambah impuls recoil berdasarkan kecepatan scroll (dibatasi max ±42px)
       targetRecoil += delta * 0.32;
       targetRecoil = Math.max(-42, Math.min(42, targetRecoil));
     }, { passive: true });
 
     function updateSigilRecoil() {
-      // Redam target kembali ke 0 (posisi netral) & kejar dengan spring easing
       targetRecoil *= 0.84;
       currentRecoil += (targetRecoil - currentRecoil) * 0.14;
 
       const stretch = 1 + Math.abs(currentRecoil) * 0.0025;
       const tilt = currentRecoil * 0.35;
 
-      // Kiri dan kanan diberi sedikit perbedaan fase biar kerasa organik
       leftRail.style.transform = `translate3d(0, ${currentRecoil.toFixed(2)}px, 0) scaleY(${stretch.toFixed(4)})`;
       rightRail.style.transform = `translate3d(0, ${(currentRecoil * 0.85).toFixed(2)}px, 0) scaleY(${stretch.toFixed(4)})`;
 
@@ -182,7 +194,9 @@ cards.forEach(card => {
     requestAnimationFrame(updateSigilRecoil);
   }
 
-  // 6. BGM Toggle (Mendukung file bgm.mp3 + fallback ambient synth otomatis)
+  // =========================================
+  // 6. BGM TOGGLE (MOBILE & DESKTOP)
+  // =========================================
   const bgmWidget = document.getElementById('bgmWidget');
   const bgmToggle = document.getElementById('bgmToggle');
   const bgmAudio = document.getElementById('bgmAudio');
@@ -194,10 +208,14 @@ cards.forEach(card => {
   let ambientNodes = [];
 
   function startFallbackAmbient() {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const freqs = [174.61, 220.00, 261.63, 329.63]; // Chord Fmaj7 ambient halus
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    audioCtx = new AudioContextClass();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const freqs = [174.61, 220.00, 261.63, 329.63];
     const masterGain = audioCtx.createGain();
-    masterGain.gain.value = 0.035;
+    masterGain.gain.value = 0.04;
     masterGain.connect(audioCtx.destination);
 
     freqs.forEach(f => {
@@ -216,100 +234,139 @@ cards.forEach(card => {
     if (audioCtx) { audioCtx.close(); audioCtx = null; }
   }
 
-  if (bgmToggle) {
-    bgmAudio.volume = 0.35;
+  if (bgmToggle && bgmAudio) {
+    bgmAudio.volume = 0.4;
 
-    bgmToggle.addEventListener('click', async () => {
+    bgmToggle.addEventListener('click', () => {
       if (!isPlaying) {
-        try {
-          await bgmAudio.play();
-          bgmTitle.textContent = 'Wish - Ailey Rain';
-        } catch (err) {
-          // Jika bgm.mp3 belum ditaruh di folder, nyalakan ambient synth halus
-          startFallbackAmbient();
-          bgmTitle.textContent = 'Ambient Mode';
+        if (bgmStatus) bgmStatus.textContent = 'LOADING...';
+        const playPromise = bgmAudio.play();
+
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            isPlaying = true;
+            bgmWidget?.classList.add('playing');
+            if (bgmStatus) bgmStatus.textContent = 'BGM ON';
+            if (bgmTitle) bgmTitle.textContent = 'Now Playing';
+          }).catch(() => {
+            startFallbackAmbient();
+            isPlaying = true;
+            bgmWidget?.classList.add('playing');
+            if (bgmStatus) bgmStatus.textContent = 'BGM ON';
+            if (bgmTitle) bgmTitle.textContent = 'Ambient Mode';
+          });
         }
-        isPlaying = true;
-        bgmWidget.classList.add('playing');
-        bgmStatus.textContent = 'BGM ON';
       } else {
         bgmAudio.pause();
         stopFallbackAmbient();
         isPlaying = false;
-        bgmWidget.classList.remove('playing');
-        bgmStatus.textContent = 'BGM OFF';
-        bgmTitle.textContent = 'Click to vibe';
+        bgmWidget?.classList.remove('playing');
+        if (bgmStatus) bgmStatus.textContent = 'BGM OFF';
+        if (bgmTitle) bgmTitle.textContent = 'Click to vibe';
       }
     });
   }
 
-  // 7. Easter Egg Mini-Terminal (>_ )
+  // =========================================
+  // 7. EASTER EGG MINI-TERMINAL (>_ )
+  // =========================================
   const termModal = document.getElementById('termModal');
   const termOpenBtn = document.getElementById('termOpenBtn');
   const termCloseBtn = document.getElementById('termCloseBtn');
   const termForm = document.getElementById('termForm');
   const termInput = document.getElementById('termInput');
   const termBody = document.getElementById('termBody');
+  const weatherEl = document.getElementById('jktWeather');
 
   const commands = {
-    help: 'Available commands: <span class="term-cmd">whoami</span>, <span class="term-cmd">neofetch</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">socials</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>, <span class="term-cmd">exit</span>',
+    help: 'Commands: <span class="term-cmd">whoami</span>, <span class="term-cmd">neofetch</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">socials</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>, <span class="term-cmd">exit</span>',
     whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer.',
     neofetch: 'OS: Windows 11 LTSC | Host: ASUS TUF A15 | Shell: azhkrt-web 1.0 | Vibe: Monochrome / Sigilcore',
     skills: 'Infra: Active Directory, LAN/WLAN, Windows Server/LTSC | Web: HTML, CSS, Vanilla JS, Laravel, Git',
-    socials: 'GitHub: github.com/azhkrt — check the right dock or footer for direct links.',
+    socials: 'GitHub: github.com/azhkrt — cek dock kanan atau footer untuk link langsung.',
+    weather: () => `Jakarta: ${weatherEl?.textContent.trim() || 'Checking weather...'}`,
     bgm: () => { bgmToggle?.click(); return 'Toggling background audio...'; }
   };
 
   function toggleTerminal(show) {
+    if (!termModal) return;
     termModal.classList.toggle('open', show);
-    if (show) setTimeout(() => termInput.focus(), 50);
+    if (show && termInput) setTimeout(() => termInput.focus(), 80);
   }
 
-  termOpenBtn?.addEventListener('click', () => toggleTerminal(true));
-  termCloseBtn?.addEventListener('click', () => toggleTerminal(false));
-  termModal?.addEventListener('click', (e) => { if (e.target === termModal) toggleTerminal(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleTerminal(false); });
+  if (termOpenBtn) {
+    termOpenBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleTerminal(true);
+    });
+  }
 
-  termForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const raw = termInput.value.trim();
-    if (!raw) return;
+  if (termCloseBtn) {
+    termCloseBtn.addEventListener('click', () => toggleTerminal(false));
+  }
 
-    const cmd = raw.toLowerCase();
-    termBody.innerHTML += `<div><span class="term-prompt">$</span> ${raw}</div>`;
+  if (termModal) {
+    termModal.addEventListener('click', (e) => {
+      if (e.target === termModal) toggleTerminal(false);
+    });
+  }
 
-    if (cmd === 'clear') {
-      termBody.innerHTML = '';
-    } else if (cmd === 'exit') {
-      toggleTerminal(false);
-    } else if (commands[cmd]) {
-      const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
-      termBody.innerHTML += `<div class="term-muted">${output}</div>`;
-    } else {
-      termBody.innerHTML += `<div class="term-muted">command not found: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
-    }
+  if (termBody && termInput) {
+    termBody.addEventListener('click', () => termInput.focus());
+  }
 
-    termInput.value = '';
-    termBody.scrollTop = termBody.scrollHeight;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggleTerminal(false);
   });
 
-  // 8. Subtle Scroll Reveal
-  const revealTargets = document.querySelectorAll('.about, .experience, .projects');
-  revealTargets.forEach(el => el.classList.add('reveal'));
+  if (termForm && termInput && termBody) {
+    termForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const raw = termInput.value.trim();
+      if (!raw) return;
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
+      const cmd = raw.toLowerCase();
+      termBody.innerHTML += `<div><span class="term-prompt">$</span> ${raw}</div>`;
+
+      if (cmd === 'clear') {
+        termBody.innerHTML = '';
+      } else if (cmd === 'exit') {
+        toggleTerminal(false);
+      } else if (commands[cmd]) {
+        const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
+        termBody.innerHTML += `<div class="term-muted">${output}</div>`;
+      } else {
+        termBody.innerHTML += `<div class="term-muted">command not found: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
       }
-    });
-  }, { threshold: 0.12 });
 
-  revealTargets.forEach(el => revealObserver.observe(el));
-  // 9. Realtime Jakarta Clock (WIB) & Open-Meteo Weather
+      termInput.value = '';
+      termBody.scrollTop = termBody.scrollHeight;
+    });
+  }
+
+  // =========================================
+  // 8. SUBTLE SCROLL REVEAL
+  // =========================================
+  const revealTargets = document.querySelectorAll('.about, .experience, .projects');
+  if (revealTargets.length && 'IntersectionObserver' in window) {
+    revealTargets.forEach(el => el.classList.add('reveal'));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+  }
+
+  // =========================================
+  // 9. REALTIME JAKARTA CLOCK & WEATHER
+  // =========================================
   const clockEl = document.getElementById('jktClock');
-  const weatherEl = document.getElementById('jktWeather');
 
   function updateJakartaClock() {
     if (!clockEl) return;
@@ -337,29 +394,60 @@ cards.forEach(card => {
     return { icon: 'fa-cloud', label: 'Overcast' };
   }
 
-  async function fetchJakartaWeather() {
-    if (!weatherEl) return;
+  async function fetchWithTimeout(url, ms = 5000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), ms);
     try {
-      // Koordinat Jakarta (-6.2088, 106.8456)
-      const url = 'https://api.open-meteo.com/v1/forecast?latitude=-6.2088&longitude=106.8456¤t=temperature_2m,weather_code,is_day&timezone=Asia%2FJakarta';
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Weather fetch failed');
-      const data = await res.json();
-
-      const temp = Math.round(data.current.temperature_2m);
-      const code = data.current.weather_code;
-      const isDay = data.current.is_day === 1;
-      const { icon, label } = mapWeatherCode(code, isDay);
-
-      weatherEl.innerHTML = `<i class="fas ${icon}"></i> ${temp}°C ${label}`;
-    } catch (err) {
-      weatherEl.innerHTML = `<i class="fas fa-cloud"></i> JKT`;
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('HTTP error');
+      return await res.json();
+    } catch (e) {
+      clearTimeout(timer);
+      throw e;
     }
   }
 
-  fetchJakartaWeather();
-  // Auto-update cuaca tiap 15 menit
-  setInterval(fetchJakartaWeather, 15 * 60 * 1000);
+  async function fetchJakartaWeather() {
+    if (!weatherEl) return;
 
-    });
+    const cacheKey = 'jkt_weather_v2';
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey));
+      if (cached && Date.now() - cached.ts < 15 * 60 * 1000) {
+        weatherEl.innerHTML = cached.html;
+        return;
+      }
+    } catch (e) {}
+
+    let weatherHTML = '';
+
+    try {
+      const data = await fetchWithTimeout(
+        'https://api.open-meteo.com/v1/forecast?latitude=-6.2088&longitude=106.8456¤t_weather=true'
+      );
+      const cw = data.current_weather;
+      const temp = Math.round(cw.temperature);
+      const { icon, label } = mapWeatherCode(cw.weathercode, cw.is_day === 1);
+      weatherHTML = `<i class="fas ${icon}"></i> ${temp}°C ${label}`;
+    } catch (err1) {
+      try {
+        const data2 = await fetchWithTimeout('https://wttr.in/Jakarta?format=j1');
+        const cond = data2.current_condition[0];
+        const temp = cond.temp_C;
+        const desc = cond.weatherDesc[0].value.split(',')[0];
+        weatherHTML = `<i class="fas fa-cloud-sun"></i> ${temp}°C ${desc}`;
+      } catch (err2) {
+        weatherHTML = `<i class="fas fa-cloud"></i> 30°C JKT`;
+      }
+    }
+
+    weatherEl.innerHTML = weatherHTML;
+    try {
+      localStorage.setItem(cacheKey, JSON.stringify({ html: weatherHTML, ts: Date.now() }));
+    } catch (e) {}
   }
+
+  fetchJakartaWeather();
+  setInterval(fetchJakartaWeather, 15 * 60 * 1000);
+});

@@ -1274,3 +1274,72 @@ footer[id] {
     bottom: 16px;
   }
 }
+
+/* =========================================
+   MOBILE TOUCH & HOVER FIX
+   ========================================= */
+.skill-group {
+  position: relative;
+  z-index: 2;
+}
+
+.skill-pill,
+.bgm-toggle {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Matikan efek hover mengambang di perangkat layar sentuh agar tap pertama langsung klik */
+@media (hover: none) and (pointer: coarse) {
+  .exp-card:hover,
+  .skills-card:hover,
+  .skill-pill:hover,
+  .bgm-toggle:hover,
+  .section-card:hover {
+    transform: none;
+  }
+}
+
+/* =========================================
+   MOBILE PERFORMANCE OPTIMIZATION (60FPS)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Matikan blur awal & background orbs blur(80px) yang bikin GPU HP panas */
+  .page-anim-wrapper {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+
+  .about::before,
+  .about::after,
+  .projects::after {
+    display: none;
+  }
+
+  /* Hentikan animasi background bergerak terus-menerus di HP */
+  .aboutme-dots,
+  .projects::before {
+    animation: none;
+  }
+
+  /* Ganti backdrop-filter blur berlapis dengan solid dark glass ringan */
+  .navbar,
+  .hero-card,
+  .content-display,
+  .exp-card,
+  .skills-card,
+  .bgm-toggle {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(20, 20, 20, 0.9);
+  }
+}
+.term-modal {
+    align-items: flex-start;
+    padding-top: 76px;
+  }
+
+  .term-body {
+    height: 180px;
+  }
