@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying = true;
             bgmWidget?.classList.add('playing');
             if (bgmStatus) bgmStatus.textContent = 'BGM ON';
-            if (bgmTitle) bgmTitle.textContent = 'Now Playing';
+            if (bgmTitle) bgmTitle.textContent = 'Wish - Ailey Rain';
           }).catch(() => {
             startFallbackAmbient();
             isPlaying = true;
