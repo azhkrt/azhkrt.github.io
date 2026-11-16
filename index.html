@@ -3,33 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://azhkrt.github.io/" />
+  <meta property="og:title" content="azhkrt. — Portfolio" />
+  <meta property="og:description" content="IT Support Specialist & Web Tinkerer — building clean interfaces and experimenting with systems." />
+  <meta property="og:image" content="https://azhkrt.github.io/sadgirl-sakura.gif" />
+  <meta name="theme-color" content="#121212" />
   <title>azhkrt — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/cruel.jpg" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23121212'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='34'>a.</text></svg>" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="page-anim-wrapper">
-    <!-- NAVBAR + BURGER MENU -->
-    <header class="navbar">
-      <div class="nav-content">
-        <a href="#home" class="logo">azhkrt.</a>
-        <button class="burger-btn" id="burgerBtn" aria-label="Toggle Menu">
-          <i class="fas fa-bars"></i>
-        </button>
-        <nav class="menu" id="navMenu">
-          <a href="#home">Home</a>
-          <a href="#aboutme">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#footer">Links</a>
-        </nav>
-      </div>
-    </header>
 
+    <header class="navbar">
+    <div class="nav-content">
+      <div class="nav-brand">
+        <a href="#home" class="logo">azhkrt.</a>
+        <button class="term-btn" id="termOpenBtn" title="Open Mini Terminal" aria-label="Open Terminal">>_</button>
+      </div>
+      <button class="burger-btn" id="burgerBtn" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="menu" id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#aboutme">About</a>
+        <a href="#experience">Work & Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#footer">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- FLOATING "FIND ME ON" SIDEBAR (Desktop) -->
+  <aside class="floating-socials" aria-label="Find me on">
+    <span class="find-label">Find me on</span>
+    <div class="find-icons">
+      <a href="https://github.com/azhkrt" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" target="_blank" rel="noopener" title="Discord"><i class="fab fa-discord"></i></a>
+      <a href="#" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </aside>
+  <!-- FLOATING SIGILCORE SIDE BORDERS -->
+  <div class="sigil-rails" aria-hidden="true">
+    <!-- Rel Kiri -->
+    <div class="sigil-rail sigil-left">
+      <svg class="sigil-emblem sigil-spin-slow" viewBox="0 0 60 120" fill="none">
+        <path d="M30 2 L34 26 L56 30 L34 34 L30 58 L26 34 L4 30 L26 26 Z" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="30" cy="30" r="14" stroke="currentColor" stroke-width="0.9" stroke-dasharray="3 3"/>
+        <path d="M30 64 V118 M22 76 H38 M25 92 H35" stroke="currentColor" stroke-width="1"/>
+        <polygon points="30,68 35,76 30,84 25,76" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <div class="sigil-line"></div>
+      <span class="sigil-glyph">† ✦ †</span>
+      <div class="sigil-line"></div>
+      <svg class="sigil-emblem" viewBox="0 0 60 80" fill="none">
+        <path d="M30 78 L33 54 L52 50 L33 46 L30 22 L27 46 L8 50 L27 54 Z" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M30 2 V18 M18 10 H42" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- Rel Kanan (Membingkai atas & bawah dock sosmed) -->
+    <div class="sigil-rail sigil-right">
+      <svg class="sigil-emblem" viewBox="0 0 60 80" fill="none">
+        <path d="M30 2 L33 26 L52 30 L33 34 L30 58 L27 34 L8 30 L27 26 Z" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M30 62 V78 M18 70 H42" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <div class="sigil-line"></div>
+      <div class="sigil-dock-spacer"></div>
+      <div class="sigil-line"></div>
+      <svg class="sigil-emblem sigil-spin-slow" viewBox="0 0 60 120" fill="none">
+        <path d="M30 2 V56 M22 44 H38 M25 28 H35" stroke="currentColor" stroke-width="1"/>
+        <polygon points="30,36 35,44 30,52 25,44" stroke="currentColor" stroke-width="1"/>
+        <path d="M30 62 L34 86 L56 90 L34 94 L30 118 L26 94 L4 90 L26 86 Z" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="30" cy="90" r="14" stroke="currentColor" stroke-width="0.9" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+  </div>
     <!-- HERO SECTION -->
-    <section id="home" class="hero">
+<section id="home" class="hero">
       <div class="hero-card">
+        <!-- LIVE JAKARTA CLOCK & WEATHER PILL -->
+        <div class="live-status-pill" id="liveStatus">
+          <span class="status-loc"><i class="fas fa-location-dot"></i> JKT</span>
+          <span class="status-sep">•</span>
+          <span class="status-clock" id="jktClock">--:--:-- WIB</span>
+          <span class="status-sep">•</span>
+          <span class="status-weather" id="jktWeather"><i class="fas fa-spinner fa-spin"></i> --°C</span>
+        </div>
+
         <h1>Hi, I'm Zax.</h1>
         <p>IT Support Specialist & Web Tinkerer — building clean interfaces and experimenting with systems.</p>
         <a href="#projects" class="btn-primary">Lihat Projects</a>
@@ -59,12 +125,86 @@
             <p>Klik untuk trivia singkat</p>
           </div>
         </div>
+        <div class="section-card" id="aesthetics">
+          <div class="card-content">
+            <h3>My aesthetics</h3>
+            <p>Klik untuk trivia singkat</p>
+          </div>
+        </div>
       </div>
+
 
       <div id="selected-content" class="content-display">
         <p>Klik salah satu kartu di atas untuk melihat detailnya.</p>
       </div>
     </section>
+<!-- WORK & SKILLS SECTION -->
+<section id="experience" class="experience">
+  <h2>Work & Skills</h2>
+  <div class="exp-grid">
+    
+    <!-- Kolom Kiri: Currently Working At -->
+    <div class="exp-card">
+      <i class="fas fa-network-wired card-watermark"></i>
+      <div class="status-badge">
+        <span class="pulse-dot"></span> Currently Working
+      </div>
+      <h3>IT Support & Network Administration</h3>
+      <p class="company">PT Danamas Insan Kreasi Andalan (DIKA)</p>
+      <p class="period">2026 — Present</p>
+      <p class="desc">
+        Bertanggung jawab menjaga stabilitas infrastruktur IT harian dan operasional perangkat di lingkungan klien korporat:
+      </p>
+      <ul class="exp-highlights">
+        <li><i class="fas fa-angle-right"></i> Administrasi Active Directory, manajemen akun user, dan domain join workstation.</li>
+        <li><i class="fas fa-angle-right"></i> Konfigurasi jaringan lokal (LAN/WLAN), IP addressing, dan troubleshooting konektivitas.</li>
+        <li><i class="fas fa-angle-right"></i> System provisioning, deployment OS Windows, serta diagnosa hardware & software.</li>
+      </ul>
+    </div>
+
+    <!-- Kolom Kanan: Interactive Skills -->
+    <div class="skills-card">
+      <i class="fas fa-terminal card-watermark"></i>
+      <div class="skills-header">
+        <h3>Core Skills</h3>
+        <span class="click-hint">Klik skill untuk detail</span>
+      </div>
+      
+      <div class="skill-group">
+        <h4>IT & Infrastructure</h4>
+        <div class="tags">
+          <button type="button" class="skill-pill active" data-skill="ad">Active Directory</button>
+          <button type="button" class="skill-pill" data-skill="net">Network Config</button>
+          <button type="button" class="skill-pill" data-skill="win">Windows Server / LTSC</button>
+          <button type="button" class="skill-pill" data-skill="prov">System Provisioning</button>
+          <button type="button" class="skill-pill" data-skill="hw">Hardware Troubleshooting</button>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Web & Tools</h4>
+        <div class="tags">
+          <button type="button" class="skill-pill" data-skill="htmlcss">HTML5 & CSS3</button>
+          <button type="button" class="skill-pill" data-skill="js">JavaScript</button>
+          <button type="button" class="skill-pill" data-skill="laravel">PHP / Laravel</button>
+          <button type="button" class="skill-pill" data-skill="git">Git & GitHub</button>
+        </div>
+      </div>
+
+      <!-- Kotak Penjelasan Detail Skill -->
+      <div class="skill-detail-box" id="skillDetailBox">
+        <div class="detail-top">
+          <strong id="skillTitle">Active Directory</strong>
+          <span class="detail-cat" id="skillCat">Infrastructure</span>
+        </div>
+        <p id="skillDesc">
+          Mengelola struktur Organizational Unit (OU), pembuatan & reset akun user korporat, penggabungan perangkat ke domain (domain join), serta penerapan kebijakan dasar akses klien.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <!-- PROJECTS SECTION -->
     <section id="projects" class="projects">
@@ -73,8 +213,9 @@
         <article class="project-card">
           <h3>Cloud 9 Web App</h3>
           <p>Aplikasi web restoran berbasis Laravel & Blade dengan sistem manajemen menu dan reservasi.</p>
-          <div class="tags"><span>Laravel</span><span>PHP</span><span>Blade</span></div>
-          <a href="https://github.com/azhkrt" target="_blank" rel="noopener">Source Code →</a>
+          <br>(archived)
+          <div class="tags"><span>Laravel</span><span>PHP</span><span>Blade</span><span>Railway</span></div>
+          <a href="https://github.com/azhkrt/cloud-9" target="_blank" rel="noopener">Source Code →</a>
         </article>
         <article class="project-card">
           <h3>Personal Portfolio</h3>
@@ -95,6 +236,38 @@
       </div>
       <p class="copyright">© 2026 azhkrt. Built from scratch.</p>
     </footer>
+  </div>
+
+  <!-- FLOATING BGM WIDGET (Pojok Kiri Bawah) -->
+  <div class="bgm-widget" id="bgmWidget">
+    <audio id="bgmAudio" src="bgm.mp3" loop preload="none"></audio>
+    <button class="bgm-toggle" id="bgmToggle" aria-label="Toggle Background Music">
+      <div class="eq-bars" id="eqBars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="bgm-info">
+        <span class="bgm-status" id="bgmStatus">BGM OFF</span>
+        <span class="bgm-title" id="bgmTitle">Click to vibe</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- EASTER EGG MINI-TERMINAL MODAL -->
+  <div class="term-modal" id="termModal" aria-hidden="true">
+    <div class="term-window">
+      <div class="term-header">
+        <span class="term-dots"><i></i><i></i><i></i></span>
+        <span class="term-heading">zax@azhkrt:~</span>
+        <button class="term-close" id="termCloseBtn" aria-label="Close Terminal">×</button>
+      </div>
+      <div class="term-body" id="termBody">
+        <p class="term-muted">Welcome to azhkrt shell v1.0. Ketik <span class="term-cmd">help</span> untuk melihat daftar perintah.</p>
+      </div>
+      <form class="term-input-row" id="termForm" autocomplete="off">
+        <span class="term-prompt">$</span>
+        <input type="text" id="termInput" placeholder="ketik perintah..." spellcheck="false" />
+      </form>
+    </div>
   </div>
 
   <script src="js/script.js"></script>
