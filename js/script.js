@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const contentDisplay = document.getElementById('selected-content');
 
   const contentData = {
-    myself: `<h3>About Myself</h3><p>Lulusan TKJ yang sehari-hari berkutat di dunia IT Support, infrastruktur jaringan, dan ngulik tampilan web.</p>`,
-    hobbies: `<h3>My Hobbies</h3><p>Ngoprek proyek web, baca visual novel & manga, dengerin maidcore/alt-rock, dan main game simulasi.</p>`,
-    facts: `<h3>Setup & Trivia</h3><p>Daily driver Windows LTSC, pencinta audio wired IEM, dan selalu nyari cara bikin UI kelihatan clean tapi berkarakter.</p>`,
-    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, 2000s visual novel atmosphere, shoegaze / digicore soundscapes, dan clean dark interfaces.</p>`
+    myself: `<h3>About Myself</h3><p>A vocational graduate in Computer and Network Engineering who spends daily life in IT support, network infrastructure, and web tinkering.</p>`,
+    hobbies: `<h3>My Hobbies</h3><p>Building web projects, reading visual novels & manga, listening to maidcore/alt-rock, and playing simulation games.</p>`,
+    facts: `<h3>Setup & Trivia</h3><p>Daily driver Windows LTSC, a fan of wired IEM audio, and always looking for ways to make interfaces look clean yet distinctive.</p>`,
+    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, early-2000s visual novel atmosphere, shoegaze / digicore soundscapes, and clean dark interfaces.</p>`
   };
 
   if (cards.length && contentDisplay) {
@@ -88,47 +88,47 @@ document.addEventListener('DOMContentLoaded', () => {
     ad: {
       title: 'Active Directory',
       cat: 'Infrastructure',
-      desc: 'Mengelola struktur Organizational Unit (OU), pembuatan & reset akun user korporat, penggabungan perangkat ke domain (domain join), serta penerapan kebijakan dasar akses klien.'
+      desc: 'Managing the Organizational Unit (OU) structure, creating and resetting corporate user accounts, joining devices to the domain, and enforcing basic client access policies.'
     },
     net: {
       title: 'Network Configuration',
       cat: 'Networking',
-      desc: 'Konfigurasi IP static/DHCP, subnetting dasar, pengecekan jalur routing, crimping kabel LAN, serta troubleshooting koneksi jaringan kantor maupun perangkat klien.'
+      desc: 'Static/DHCP IP configuration, basic subnetting, route checking, LAN cable crimping, and troubleshooting office network connectivity for client devices.'
     },
     win: {
       title: 'Windows Server & LTSC',
       cat: 'Operating System',
-      desc: 'Administrasi lingkungan Windows korporat (Windows 10/11 Pro & LTSC), optimasi service sistem, manajemen permission folder sharing, dan pemeliharaan stabilitas OS.'
+      desc: 'Administration of corporate Windows environments (Windows 10/11 Pro & LTSC), system service optimization, shared-folder permission management, and maintaining OS stability.'
     },
     prov: {
       title: 'System Provisioning',
       cat: 'Deployment',
-      desc: 'Menyiapkan unit PC/laptop baru dari nol hingga siap pakai: instalasi OS, driver, standar software kantor, konfigurasi keamanan, hingga serah terima ke user.'
+      desc: 'Preparing new PC/laptop units from scratch to ready-to-use: OS installation, drivers, office software standards, security setup, and user handover.'
     },
     hw: {
       title: 'Hardware Troubleshooting',
       cat: 'IT Support',
-      desc: 'Diagnosa kerusakan komponen PC & laptop (RAM, storage NVMe, thermal, power), penggantian sparepart, serta preventive maintenance rutin.'
+      desc: 'Diagnosing PC and laptop component failures (RAM, NVMe storage, thermal issues, power), replacing spare parts, and routine preventive maintenance.'
     },
     htmlcss: {
       title: 'HTML5 & CSS3',
       cat: 'Frontend',
-      desc: 'Membangun struktur halaman web semantik, layout responsif dengan CSS Grid & Flexbox, serta styling modern seperti glassmorphism dan animasi keyframe.'
+      desc: 'Building semantic page structures, responsive layouts using CSS Grid and Flexbox, and modern styling such as glassmorphism and keyframe animations.'
     },
     js: {
       title: 'JavaScript (Vanilla)',
       cat: 'Frontend',
-      desc: 'Manipulasi DOM untuk interaksi dinamis (seperti kartu interaktif dan efek 3D tilt di portfolio ini), event handling, dan logika antarmuka tanpa bergantung framework berat.'
+      desc: 'DOM manipulation for dynamic interactivity (like the interactive cards and 3D tilt effects on this portfolio), event handling, and interface logic without relying on heavy frameworks.'
     },
     laravel: {
       title: 'PHP & Laravel',
       cat: 'Backend / Fullstack',
-      desc: 'Pengembangan aplikasi web dinamis menggunakan arsitektur MVC Laravel, routing, Blade templating, serta integrasi database relasional.'
+      desc: 'Developing dynamic web applications using the Laravel MVC architecture, routing, Blade templating, and relational database integration.'
     },
     git: {
       title: 'Git & GitHub',
       cat: 'Workflow',
-      desc: 'Version control untuk melacak perubahan kode, manajemen branch repository, serta deployment proyek statis menggunakan GitHub Pages.'
+      desc: 'Version control for tracking code changes, managing repository branches, and deploying static projects via GitHub Pages.'
     }
   };
 
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer.',
     neofetch: 'OS: Windows 11 LTSC | Host: ASUS TUF A15 | Shell: azhkrt-web 1.0 | Vibe: Monochrome / Sigilcore',
     skills: 'Infra: Active Directory, LAN/WLAN, Windows Server/LTSC | Web: HTML, CSS, Vanilla JS, Laravel, Git',
-    socials: 'GitHub: github.com/azhkrt — cek dock kanan atau footer untuk link langsung.',
+    socials: 'GitHub: github.com/azhkrt — check the right dock or footer for direct links.',
     weather: () => `Jakarta: ${weatherEl?.textContent.trim() || 'Checking weather...'}`,
     bgm: () => { bgmToggle?.click(); return 'Toggling background audio...'; }
   };
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
         termBody.innerHTML += `<div class="term-muted">${output}</div>`;
       } else {
-        termBody.innerHTML += `<div class="term-muted">command not found: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
+        termBody.innerHTML += `<div class="term-muted">command not found: ${raw}. Type <span class="term-cmd">help</span>.</div>`;
       }
 
       termInput.value = '';
