@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const contentDisplay = document.getElementById('selected-content');
 
   const contentData = {
-    myself: `<h3>About Myself</h3><p>Lulusan TKJ yang sehari-hari berkutat di dunia IT Support, infrastruktur jaringan, dan ngulik tampilan web.</p>`,
-    hobbies: `<h3>My Hobbies</h3><p>Ngoprek proyek web, baca visual novel & manga, dengerin maidcore/alt-rock, dan main game simulasi.</p>`,
-    facts: `<h3>Setup & Trivia</h3><p>Daily driver Windows LTSC, pencinta audio wired IEM, dan selalu nyari cara bikin UI kelihatan clean tapi berkarakter.</p>`,
-    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, 2000s visual novel atmosphere, shoegaze / digicore soundscapes, dan clean dark interfaces.</p>`
+    myself: `<h3>About Myself</h3><p>A Computer Engineering and Networking (TKJ) graduate who spends their days immersed in IT support, network infrastructure, and tinkering with web design.</p>`,
+    hobbies: `<h3>My Hobbies</h3><p>Tinkering with web projects, reading visual novels & manga, listening to maidcore/alt-rock, and playing simulation games.</p>`,
+    facts: `<h3>Setup & Trivia</h3><p>Uses Windows LTSC as a daily driver, a fan of wired IEMs for audio, and always looking for ways to make the UI look clean yet full of character.</p>`,
+    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, 2000s visual novel atmosphere, shoegaze / digicore soundscapes, and clean dark interfaces.</p>`
   };
 
 cards.forEach(card => {
@@ -77,47 +77,47 @@ cards.forEach(card => {
     ad: {
       title: 'Active Directory',
       cat: 'Infrastructure',
-      desc: 'Mengelola struktur Organizational Unit (OU), pembuatan & reset akun user korporat, penggabungan perangkat ke domain (domain join), serta penerapan kebijakan dasar akses klien.'
+      desc: 'Managing the Organizational Unit (OU) structure, creating and resetting corporate user accounts, joining devices to the domain, and implementing basic client access policies.'
     },
     net: {
       title: 'Network Configuration',
       cat: 'Networking',
-      desc: 'Konfigurasi IP static/DHCP, subnetting dasar, pengecekan jalur routing, crimping kabel LAN, serta troubleshooting koneksi jaringan kantor maupun perangkat klien.'
+      desc: 'Static/DHCP IP configuration, basic subnetting, checking routing paths, crimping LAN cables, and troubleshooting office network connections as well as client devices.'
     },
     win: {
       title: 'Windows Server & LTSC',
       cat: 'Operating System',
-      desc: 'Administrasi lingkungan Windows korporat (Windows 10/11 Pro & LTSC), optimasi service sistem, manajemen permission folder sharing, dan pemeliharaan stabilitas OS.'
+      desc: 'Administration of corporate Windows environments (Windows 10/11 Pro & LTSC), optimization of system services, management of folder-sharing permissions, and maintenance of OS stability.'
     },
     prov: {
       title: 'System Provisioning',
       cat: 'Deployment',
-      desc: 'Menyiapkan unit PC/laptop baru dari nol hingga siap pakai: instalasi OS, driver, standar software kantor, konfigurasi keamanan, hingga serah terima ke user.'
+      desc: 'Setting up a new PC/laptop from scratch and making it ready for use: installing the OS, drivers, and standard office software, configuring security settings, and handing it over to the user.'
     },
     hw: {
       title: 'Hardware Troubleshooting',
       cat: 'IT Support',
-      desc: 'Diagnosa kerusakan komponen PC & laptop (RAM, storage NVMe, thermal, power), penggantian sparepart, serta preventive maintenance rutin.'
+      desc: 'Diagnosis of PC and laptop component issues (RAM, NVMe storage, thermal, power), spare part replacement, and routine preventive maintenance.'
     },
     htmlcss: {
       title: 'HTML5 & CSS3',
       cat: 'Frontend',
-      desc: 'Membangun struktur halaman web semantik, layout responsif dengan CSS Grid & Flexbox, serta styling modern seperti glassmorphism dan animasi keyframe.'
+      desc: 'Building semantic web page structures, responsive layouts using CSS Grid & Flexbox, and applying modern styling such as glassmorphism and keyframe animations.'
     },
     js: {
       title: 'JavaScript (Vanilla)',
       cat: 'Frontend',
-      desc: 'Manipulasi DOM untuk interaksi dinamis (seperti kartu interaktif dan efek 3D tilt di portfolio ini), event handling, dan logika antarmuka tanpa bergantung framework berat.'
+      desc: 'DOM manipulation for dynamic interactions (such as interactive cards and 3D tilt effects in this portfolio), event handling, and interface logic—all without relying on heavy frameworks.'
     },
     laravel: {
       title: 'PHP & Laravel',
       cat: 'Backend / Fullstack',
-      desc: 'Pengembangan aplikasi web dinamis menggunakan arsitektur MVC Laravel, routing, Blade templating, serta integrasi database relasional.'
+      desc: 'Development of dynamic web applications using the Laravel MVC architecture, routing, Blade templating, and relational database integration.'
     },
     git: {
       title: 'Git & GitHub',
       cat: 'Workflow',
-      desc: 'Version control untuk melacak perubahan kode, manajemen branch repository, serta deployment proyek statis menggunakan GitHub Pages.'
+      desc: 'Version control for tracking code changes, managing repository branches, and deploying static projects using GitHub Pages.'
     }
   };
 
@@ -256,7 +256,7 @@ cards.forEach(card => {
     whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer.',
     neofetch: 'OS: Windows 11 LTSC | Host: ASUS TUF A15 | Shell: azhkrt-web 1.0 | Vibe: Monochrome / Sigilcore',
     skills: 'Infra: Active Directory, LAN/WLAN, Windows Server/LTSC | Web: HTML, CSS, Vanilla JS, Laravel, Git',
-    socials: 'GitHub: github.com/azhkrt — cek dock kanan atau footer untuk link langsung.',
+    socials: 'GitHub: github.com/azhkrt — check the right dock or footer for direct links.',
     bgm: () => { bgmToggle?.click(); return 'Toggling background audio...'; }
   };
 
