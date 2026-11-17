@@ -28,13 +28,42 @@ document.addEventListener('DOMContentLoaded', () => {
     aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, early-2000s visual novel atmosphere, shoegaze / digicore soundscapes, and clean dark interfaces.</p>`
   };
 
+const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
+
+  function clearMobileDetails() {
+    document.querySelectorAll('.mobile-card-detail').forEach(el => el.remove());
+  }
+
   if (cards.length && contentDisplay) {
     cards.forEach(card => {
       card.addEventListener('click', () => {
+        const html = contentData[card.id] || '';
+        const wasActive = card.classList.contains('active');
+
         cards.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        contentDisplay.innerHTML = `<div class="content-fade">${contentData[card.id] || ''}</div>`;
+        clearMobileDetails();
+
+        if (isMobileView()) {
+          // Khusus HP: Kalau kartu yang sama dipencet lagi, tutup deskripsinya
+          if (wasActive) return;
+
+          // Sisipkan kotak deskripsi tepat di bawah kartu yang dipencet
+          card.classList.add('active');
+          const detailBox = document.createElement('div');
+          detailBox.className = 'mobile-card-detail content-fade';
+          detailBox.innerHTML = html;
+          card.insertAdjacentElement('afterend', detailBox);
+        } else {
+          // Khusus Desktop: Tetap tampil di box bawah grid 4 kolom
+          card.classList.add('active');
+          contentDisplay.innerHTML = `<div class="content-fade">${html}</div>`;
+        }
       });
+    });
+
+    // Hapus box inline kalau layar di-resize balik ke desktop
+    window.addEventListener('resize', () => {
+      if (!isMobileView()) clearMobileDetails();
     });
   }
 
@@ -299,6 +328,15 @@ document.addEventListener('DOMContentLoaded', () => {
     startMenu?.classList.remove('open');
   }
 
+    function openSpotify() {
+    window.open('https://open.spotify.com/user/314lykdmqdkzq2a3p62nq6qfalxq?si=20d5b1c4b7ee4f4c', '_blank');
+    startMenu?.classList.remove('open');
+  }
+
+      function openInstagram() {
+    window.open('https://www.instagram.com/azhkrt_/', '_blank');
+    startMenu?.classList.remove('open');
+  }
   function openTerminalApp() {
     if (!termWindow) return;
     termWindow.classList.remove('minimized');
@@ -313,6 +351,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('iconPinterest')?.addEventListener('click', openPinterest);
   document.getElementById('menuPinterest')?.addEventListener('click', openPinterest);
+  
+  document.getElementById('iconSpotify')?.addEventListener('click', openSpotify);
+  document.getElementById('menuSpotify')?.addEventListener('click', openSpotify);
+
+  document.getElementById('iconInstagram')?.addEventListener('click', openInstagram);
+  document.getElementById('menuInstagram')?.addEventListener('click', openInstagram);
 
   document.getElementById('iconTerm')?.addEventListener('click', openTerminalApp);
   document.getElementById('menuTerm')?.addEventListener('click', openTerminalApp);
@@ -401,12 +445,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const neofetchHTML = `
     <div class="nf-box">
       <pre class="nf-ascii">  
-                               _
-   / |    ___| |___ | / /___ _ | |__ 
-  / _ |  |_  / '_  ||/ /  '__|    __|
- / ___ |  / /| | | || <  | |   | | 
-/_/    _|/___|_| |_||_|| |_|   | |
-                               | |
+                              _
+   / |    ___| |___ | / /____| |__ 
+  / _ |  |_  / '_  ||/ /  '__   __|
+ / ___ |  / /| | | || <  | | | | 
+/_/    _|/___|_| |_||_|| |_| | |
+                             | |
 
 
   † azhkrt †</pre>
