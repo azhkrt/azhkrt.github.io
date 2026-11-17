@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const contentDisplay = document.getElementById('selected-content');
 
   const contentData = {
-    myself: `<h3>About Myself</h3><p>A vocational graduate in Computer and Network Engineering who spends daily life in IT support, network infrastructure, and web tinkering.</p>`,
-    hobbies: `<h3>My Hobbies</h3><p>Building web projects, reading visual novels & manga, listening to maidcore/alt-rock, and playing simulation games.</p>`,
-    facts: `<h3>Setup & Trivia</h3><p>Daily driver Windows LTSC, a fan of wired IEM audio, and always looking for ways to make interfaces look clean yet distinctive.</p>`,
-    aesthetics: `<h3>My Aesthetics</h3><p>Monochrome glassmorphism, early-2000s visual novel atmosphere, shoegaze / digicore soundscapes, and clean dark interfaces.</p>`
+    myself: `<h3>Tentang Saya</h3><p>Lulusan vokasi di bidang Teknik Komputer dan Jaringan yang sehari-hari berkecimpung di layanan IT, infrastruktur jaringan, dan eksperimen web.</p>`,
+    hobbies: `<h3>Hobi</h3><p>Membangun proyek web, membaca visual novel & manga, mendengarkan maidcore/alt-rock, serta bermain game simulasi.</p>`,
+    facts: `<h3>Pengaturan & Fakta</h3><p>Daily driver Windows LTSC, penggemar audio IEM kabel, dan selalu mencari cara agar antarmuka terlihat rapi namun khas.</p>`,
+    aesthetics: `<h3>Estetikku</h3><p>Glassmorphism monokrom, atmosfer visual novel awal 2000-an, lanskap suara shoegaze / digicore, dan antarmuka gelap yang bersih.</p>`
   };
 
   if (cards.length && contentDisplay) {
@@ -87,48 +87,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillData = {
     ad: {
       title: 'Active Directory',
-      cat: 'Infrastructure',
-      desc: 'Managing the Organizational Unit (OU) structure, creating and resetting corporate user accounts, joining devices to the domain, and enforcing basic client access policies.'
+      cat: 'Infrastruktur',
+      desc: 'Mengelola struktur Organizational Unit (OU), membuat dan mereset akun pengguna perusahaan, menghubungkan perangkat ke domain, serta menerapkan kebijakan akses client dasar.'
     },
     net: {
-      title: 'Network Configuration',
-      cat: 'Networking',
-      desc: 'Static/DHCP IP configuration, basic subnetting, route checking, LAN cable crimping, and troubleshooting office network connectivity for client devices.'
+      title: 'Konfigurasi Jaringan',
+      cat: 'Jaringan',
+      desc: 'Konfigurasi IP statis/DHCP, subnetting dasar, pengecekan rute, pemasangan kabel LAN, serta troubleshooting konektivitas jaringan kantor untuk perangkat klien.'
     },
     win: {
       title: 'Windows Server & LTSC',
-      cat: 'Operating System',
-      desc: 'Administration of corporate Windows environments (Windows 10/11 Pro & LTSC), system service optimization, shared-folder permission management, and maintaining OS stability.'
+      cat: 'Sistem Operasi',
+      desc: 'Administrasi lingkungan Windows perusahaan (Windows 10/11 Pro & LTSC), optimasi layanan sistem, pengelolaan izin folder bersama, serta menjaga stabilitas OS.'
     },
     prov: {
-      title: 'System Provisioning',
+      title: 'Provisioning Sistem',
       cat: 'Deployment',
-      desc: 'Preparing new PC/laptop units from scratch to ready-to-use: OS installation, drivers, office software standards, security setup, and user handover.'
+      desc: 'Menyiapkan unit PC/laptop baru dari nol hingga siap pakai: instalasi OS, driver, standar perangkat lunak kantor, pengaturan keamanan, dan serah terima pengguna.'
     },
     hw: {
-      title: 'Hardware Troubleshooting',
+      title: 'Troubleshooting Perangkat Keras',
       cat: 'IT Support',
-      desc: 'Diagnosing PC and laptop component failures (RAM, NVMe storage, thermal issues, power), replacing spare parts, and routine preventive maintenance.'
+      desc: 'Mendiagnosis kerusakan komponen PC dan laptop (RAM, penyimpanan NVMe, masalah termal, daya), mengganti spare part, serta pemeliharaan preventif rutin.'
     },
     htmlcss: {
       title: 'HTML5 & CSS3',
       cat: 'Frontend',
-      desc: 'Building semantic page structures, responsive layouts using CSS Grid and Flexbox, and modern styling such as glassmorphism and keyframe animations.'
+      desc: 'Membangun struktur halaman yang semantik, layout responsif menggunakan CSS Grid dan Flexbox, serta styling modern seperti glassmorphism dan animasi keyframe.'
     },
     js: {
       title: 'JavaScript (Vanilla)',
       cat: 'Frontend',
-      desc: 'DOM manipulation for dynamic interactivity (like the interactive cards and 3D tilt effects on this portfolio), event handling, and interface logic without relying on heavy frameworks.'
+      desc: 'Manipulasi DOM untuk interaktivitas dinamis (seperti kartu interaktif dan efek tilt 3D di portofolio ini), penanganan event, serta logika antarmuka tanpa bergantung pada framework berat.'
     },
     laravel: {
       title: 'PHP & Laravel',
       cat: 'Backend / Fullstack',
-      desc: 'Developing dynamic web applications using the Laravel MVC architecture, routing, Blade templating, and relational database integration.'
+      desc: 'Mengembangkan aplikasi web dinamis menggunakan arsitektur MVC Laravel, routing, templating Blade, dan integrasi database relasional.'
     },
     git: {
       title: 'Git & GitHub',
-      cat: 'Workflow',
-      desc: 'Version control for tracking code changes, managing repository branches, and deploying static projects via GitHub Pages.'
+      cat: 'Alur Kerja',
+      desc: 'Kontrol versi untuk melacak perubahan kode, mengelola branch repositori, dan mendeploy proyek statis melalui GitHub Pages.'
     }
   };
 
@@ -239,21 +239,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bgmToggle.addEventListener('click', () => {
       if (!isPlaying) {
-        if (bgmStatus) bgmStatus.textContent = 'LOADING...';
+        if (bgmStatus) bgmStatus.textContent = 'MEMUAT...';
         const playPromise = bgmAudio.play();
 
         if (playPromise !== undefined) {
           playPromise.then(() => {
             isPlaying = true;
             bgmWidget?.classList.add('playing');
-            if (bgmStatus) bgmStatus.textContent = 'BGM ON';
+            if (bgmStatus) bgmStatus.textContent = 'MUSIK AKTIF';
             if (bgmTitle) bgmTitle.textContent = 'Wish - Ailey Rain';
           }).catch(() => {
             startFallbackAmbient();
             isPlaying = true;
             bgmWidget?.classList.add('playing');
-            if (bgmStatus) bgmStatus.textContent = 'BGM ON';
-            if (bgmTitle) bgmTitle.textContent = 'Ambient Mode';
+            if (bgmStatus) bgmStatus.textContent = 'MUSIK AKTIF';
+            if (bgmTitle) bgmTitle.textContent = 'Mode Ambient';
           });
         }
       } else {
@@ -261,8 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
         stopFallbackAmbient();
         isPlaying = false;
         bgmWidget?.classList.remove('playing');
-        if (bgmStatus) bgmStatus.textContent = 'BGM OFF';
-        if (bgmTitle) bgmTitle.textContent = 'Click to vibe';
+        if (bgmStatus) bgmStatus.textContent = 'MUSIK MATI';
+        if (bgmTitle) bgmTitle.textContent = 'Klik untuk bersantai';
       }
     });
   }
@@ -413,11 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <ul class="nf-info">
         <li><strong>zax@azhkrt</strong></li>
         <li>-------------------</li>
-        <li><strong>OS:</strong> Windows 11 LTSC</li>
+        <li><strong>Sistem Operasi:</strong> Windows 11 LTSC</li>
         <li><strong>Host:</strong> ASUS TUF A15 (Ryzen 5 / RTX 4050)</li>
-        <li><strong>Role:</strong> IT Support & NetAdmin @ DIKA</li>
+        <li><strong>Peran:</strong> IT Support & NetAdmin @ DIKA</li>
         <li><strong>Shell:</strong> azhkrt-zsh 2.0</li>
-        <li><strong>Theme:</strong> Monochrome Sigilcore</li>
+        <li><strong>Tema:</strong> Monochrome Sigilcore</li>
         <li class="nf-swatches">
           <span style="background:#ffffff"></span>
           <span style="background:#a3a3a3"></span>
@@ -430,15 +430,15 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   const commands = {
-    help: 'Commands: <span class="term-cmd">neofetch</span>, <span class="term-cmd">whoami</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">projects</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">files</span>, <span class="term-cmd">firefox</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>',
+    help: 'Perintah: <span class="term-cmd">neofetch</span>, <span class="term-cmd">whoami</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">projects</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">files</span>, <span class="term-cmd">firefox</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>',
     neofetch: neofetchHTML,
-    whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer. 18 Years Old born at 04 Nov 2008, Single, Yandere, Attachment Issues, Crazy asf, Have an obsession towards someone, can get jealous easily and possessive, and can be clingy. Likes: Visual Novels, Manga, Simulation Games. Loves Maidcore, Digicore, Shoegaze, Alt Rock, instrumental, etc.',
+    whoami: 'Zax (azhkrt) — IT Support & Administrasi Jaringan @ DIKA. Web tinkerer & pecinta visual novel. Berusia 18 tahun, lahir 04 Nov 2008, single, yandere, masalah attachment, gila, punya obsesi pada seseorang, mudah cemburu dan posesif, serta bisa clingy. Suka: Visual Novel, Manga, Game Simulasi. Menyukai Maidcore, Digicore, Shoegaze, Alt Rock, instrumental, dll.',
     skills: 'Infra: Active Directory, LAN/WLAN, Windows Server/LTSC | Web: HTML, CSS, Vanilla JS, Laravel, Git',
-    projects: '1. Cloud 9 Web App (Laravel) | 2. azhkrt.github.io (Monochrome Sigilcore Portfolio)',
-    weather: () => `Jakarta: ${weatherEl?.textContent.trim() || 'Checking weather...'}`,
-    files: () => { openGitHubRepo(); return 'Opening GitHub repositories...'; },
-    firefox: () => { openBlankFirefox(); return 'Launching new blank Firefox tab...'; },
-    bgm: () => { bgmToggle?.click(); return 'Toggling background audio...'; }
+    projects: '1. Cloud 9 Web App (Laravel) | 2. azhkrt.github.io (Portofolio Sigilcore Monokrom)',
+    weather: () => `Jakarta: ${weatherEl?.textContent.trim() || 'Memeriksa cuaca...'}`,
+    files: () => { openGitHubRepo(); return 'Membuka repository GitHub...'; },
+    firefox: () => { openBlankFirefox(); return 'Meluncurkan tab Firefox baru yang kosong...'; },
+    bgm: () => { bgmToggle?.click(); return 'Mengalihkan audio latar...'; }
   };
 
   function runTerminalCommand(raw) {
@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
       termBody.innerHTML += `<div class="term-muted">${output}</div>`;
     } else {
-      termBody.innerHTML += `<div class="term-muted">zsh: command not found: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
+      termBody.innerHTML += `<div class="term-muted">zsh: perintah tidak ditemukan: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
     }
 
     termBody.scrollTop = termBody.scrollHeight;
@@ -518,13 +518,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateJakartaClock, 1000);
 
   function mapWeatherCode(code, isDay) {
-    if (code === 0) return { icon: isDay ? 'fa-sun' : 'fa-moon', label: 'Clear' };
-    if (code <= 3) return { icon: isDay ? 'fa-cloud-sun' : 'fa-cloud-moon', label: 'Cloudy' };
-    if (code === 45 || code === 48) return { icon: 'fa-smog', label: 'Haze' };
-    if (code >= 51 && code <= 67) return { icon: 'fa-cloud-rain', label: 'Rain' };
-    if (code >= 80 && code <= 82) return { icon: 'fa-cloud-showers-heavy', label: 'Showers' };
-    if (code >= 95) return { icon: 'fa-bolt', label: 'Storm' };
-    return { icon: 'fa-cloud', label: 'Overcast' };
+    if (code === 0) return { icon: isDay ? 'fa-sun' : 'fa-moon', label: 'Cerah' };
+    if (code <= 3) return { icon: isDay ? 'fa-cloud-sun' : 'fa-cloud-moon', label: 'Berawan' };
+    if (code === 45 || code === 48) return { icon: 'fa-smog', label: 'Kabut' };
+    if (code >= 51 && code <= 67) return { icon: 'fa-cloud-rain', label: 'Hujan' };
+    if (code >= 80 && code <= 82) return { icon: 'fa-cloud-showers-heavy', label: 'Hujan Lebat' };
+    if (code >= 95) return { icon: 'fa-bolt', label: 'Badai' };
+    return { icon: 'fa-cloud', label: 'Mendung' };
   }
 
   async function fetchWithTimeout(url, ms = 5000) {
