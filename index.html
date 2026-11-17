@@ -21,8 +21,7 @@
     <div class="nav-content">
       <div class="nav-brand">
         <a href="#home" class="logo">azhkrt.</a>
-        <button class="term-btn" id="termOpenBtn" title="Open Mini Terminal" aria-label="Open Terminal">>_</button>
-      </div>
+        <a href="#terminal" class="term-btn" title="Jump to Terminal">>_</a></div>
       <button class="burger-btn" id="burgerBtn" aria-label="Toggle Menu">
         <i class="fas fa-bars"></i>
       </button>
@@ -223,6 +222,127 @@
       </div>
     </section>
 
+    <!-- FULL DESKTOP ENVIRONMENT SECTION -->
+<section id="terminal" class="desktop-section">
+  <div class="desktop-bezel">
+    <!-- Desktop Screen Canvas -->
+    <div class="os-screen" id="osScreen">
+      
+      <!-- Desktop Shortcuts (Kiri Atas) -->
+      <div class="desktop-icons">
+        <button type="button" class="desk-icon" id="iconFiles" title="Buka GitHub Repositories">
+          <div class="icon-box"><i class="fas fa-folder-open"></i></div>
+          <span>Files</span>
+        </button>
+
+        <button type="button" class="desk-icon" id="iconTerm" title="Buka / Fokus Terminal">
+          <div class="icon-box"><i class="fas fa-terminal"></i></div>
+          <span>Terminal</span>
+        </button>
+
+        <button type="button" class="desk-icon" id="iconPinterest" title="Buka Pinterest">
+          <div class="icon-box"><i class="fab fa-pinterest"></i></div>
+          <span>Pinterest</span>
+        </button>
+      </div>
+
+      <!-- Draggable Terminal Window -->
+      <div class="os-window" id="termWindow">
+        <div class="win-titlebar" id="termTitlebar">
+          <div class="win-title">
+            <i class="fas fa-terminal"></i>
+            <span>zax@azhkrt: ~ (zsh)</span>
+          </div>
+          <div class="win-controls">
+            <button type="button" class="win-btn" id="winMinBtn" title="Minimize"><i class="fas fa-minus"></i></button>
+            <button type="button" class="win-btn" id="winMaxBtn" title="Maximize / Restore"><i class="far fa-square"></i></button>
+            <button type="button" class="win-btn win-close" id="winCloseBtn" title="Close"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+
+        <div class="term-body" id="termBody">
+          <p class="term-muted">azhkrtOS tty1 — Ketik <span class="term-cmd">neofetch</span> atau <span class="term-cmd">help</span> langsung di bawah.</p>
+        </div>
+
+        <!-- Quick Command Chips (Biar di HP tinggal tap) -->
+        <div class="cmd-chips">
+          <button type="button" class="cmd-chip" data-cmd="neofetch">neofetch</button>
+          <button type="button" class="cmd-chip" data-cmd="whoami">whoami</button>
+          <button type="button" class="cmd-chip" data-cmd="skills">skills</button>
+          <button type="button" class="cmd-chip" data-cmd="projects">projects</button>
+          <button type="button" class="cmd-chip" data-cmd="weather">weather</button>
+          <button type="button" class="cmd-chip" data-cmd="clear">clear</button>
+        </div>
+
+        <form class="term-input-row" id="termForm" autocomplete="off">
+          <span class="term-prompt">zax@azhkrt:~$</span>
+          <input type="text" id="termInput" placeholder="ketik perintah..." spellcheck="false" />
+        </form>
+      </div>
+
+      <!-- Start Menu Popup -->
+      <div class="start-menu" id="startMenu" aria-hidden="true">
+        <div class="start-header">
+          <div class="start-avatar">Z</div>
+          <div>
+            <strong>Zax (azhkrt)</strong>
+            <span>IT Support & NetAdmin</span>
+          </div>
+        </div>
+
+        <div class="start-list">
+          <button type="button" class="start-item" id="menuFiles">
+            <i class="fas fa-folder-open"></i>
+            <div>
+              <strong>File Manager</strong>
+              <span>Buka GitHub Repositories</span>
+            </div>
+          </button>
+
+          <button type="button" class="start-item" id="menuTerm">
+            <i class="fas fa-terminal"></i>
+            <div>
+              <strong>Terminal</strong>
+              <span>Jalankan shell & neofetch</span>
+            </div>
+          </button>
+
+          <button type="button" class="start-item" id="menuFirefox">
+            <i class="fab fa-firefox-browser"></i>
+            <div>
+              <strong>Firefox Browser</strong>
+              <span>Buka tab web baru kosong</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="start-footer">
+          <a href="#home"><i class="fas fa-arrow-up"></i> Top</a>
+          <button type="button" id="menuReset"><i class="fas fa-rotate-right"></i> Reset Desktop</button>
+        </div>
+      </div>
+
+      <!-- Bottom Taskbar -->
+      <div class="os-taskbar">
+        <button type="button" class="start-btn" id="startBtn">
+          <span class="sigil-mark">†</span> Start
+        </button>
+
+        <div class="task-apps">
+          <button type="button" class="task-pill active" id="taskTermBtn">
+            <i class="fas fa-terminal"></i> Terminal
+          </button>
+        </div>
+
+        <div class="task-tray">
+          <span id="osTrayClock">WIB</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
     <!-- FOOTER (CONTACTS & COPYRIGHT) -->
     <footer id="footer" class="site-footer">
       <div class="footer-socials">
@@ -247,24 +367,6 @@
         <span class="bgm-title" id="bgmTitle">Click to vibe</span>
       </div>
     </button>
-  </div>
-
-  <!-- EASTER EGG MINI-TERMINAL MODAL -->
-  <div class="term-modal" id="termModal" aria-hidden="true">
-    <div class="term-window">
-      <div class="term-header">
-        <span class="term-dots"><i></i><i></i><i></i></span>
-        <span class="term-heading">zax@azhkrt:~</span>
-        <button class="term-close" id="termCloseBtn" aria-label="Close Terminal">×</button>
-      </div>
-      <div class="term-body" id="termBody">
-        <p class="term-muted">Welcome to azhkrt shell v1.0. Type <span class="term-cmd">help</span> to see the list of commands.</p>
-      </div>
-      <form class="term-input-row" id="termForm" autocomplete="off">
-        <span class="term-prompt">$</span>
-        <input type="text" id="termInput" placeholder="type a command..." spellcheck="false" />
-      </form>
-    </div>
   </div>
 
   <script src="js/script.js?v=3"></script>

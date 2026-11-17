@@ -267,83 +267,215 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+// =========================================
+  // 7. FULL DESKTOP ENVIRONMENT & TERMINAL
   // =========================================
-  // 7. EASTER EGG MINI-TERMINAL (>_ )
-  // =========================================
-  const termModal = document.getElementById('termModal');
-  const termOpenBtn = document.getElementById('termOpenBtn');
-  const termCloseBtn = document.getElementById('termCloseBtn');
+  const osScreen = document.getElementById('osScreen');
+  const termWindow = document.getElementById('termWindow');
+  const termTitlebar = document.getElementById('termTitlebar');
   const termForm = document.getElementById('termForm');
   const termInput = document.getElementById('termInput');
   const termBody = document.getElementById('termBody');
+  const cmdChips = document.querySelectorAll('.cmd-chip');
   const weatherEl = document.getElementById('jktWeather');
 
+  // Window & Taskbar Controls
+  const winMinBtn = document.getElementById('winMinBtn');
+  const winMaxBtn = document.getElementById('winMaxBtn');
+  const winCloseBtn = document.getElementById('winCloseBtn');
+  const taskTermBtn = document.getElementById('taskTermBtn');
+
+  // Start Menu & Desktop Shortcuts
+  const startBtn = document.getElementById('startBtn');
+  const startMenu = document.getElementById('startMenu');
+
+  function openGitHubRepo() {
+    window.open('https://github.com/azhkrt?tab=repositories', '_blank', 'noopener');
+    startMenu?.classList.remove('open');
+  }
+
+  function openPinterest() {
+    window.open('https://pin.it/5BnWW2ciG', '_blank');
+    startMenu?.classList.remove('open');
+  }
+
+  function openTerminalApp() {
+    if (!termWindow) return;
+    termWindow.classList.remove('minimized');
+    taskTermBtn?.classList.add('active');
+    startMenu?.classList.remove('open');
+    setTimeout(() => termInput?.focus(), 60);
+  }
+
+  // Desktop Icons & Start Menu Bindings
+  document.getElementById('iconFiles')?.addEventListener('click', openGitHubRepo);
+  document.getElementById('menuFiles')?.addEventListener('click', openGitHubRepo);
+
+  document.getElementById('iconPinterest')?.addEventListener('click', openPinterest);
+  document.getElementById('menuPinterest')?.addEventListener('click', openPinterest);
+
+  document.getElementById('iconTerm')?.addEventListener('click', openTerminalApp);
+  document.getElementById('menuTerm')?.addEventListener('click', openTerminalApp);
+
+  document.getElementById('menuReset')?.addEventListener('click', () => {
+    if (termWindow) {
+      termWindow.classList.remove('minimized', 'maximized');
+      termWindow.style.top = '';
+      termWindow.style.left = '';
+    }
+    taskTermBtn?.classList.add('active');
+    startMenu?.classList.remove('open');
+  });
+
+  // Start Button Toggle
+  startBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    startMenu?.classList.toggle('open');
+  });
+
+  osScreen?.addEventListener('click', (e) => {
+    if (startMenu && !startMenu.contains(e.target) && e.target !== startBtn) {
+      startMenu.classList.remove('open');
+    }
+  });
+
+  // Window Buttons (Minimize, Maximize, Close)
+  winMinBtn?.addEventListener('click', () => {
+    termWindow?.classList.add('minimized');
+    taskTermBtn?.classList.remove('active');
+  });
+
+  winCloseBtn?.addEventListener('click', () => {
+    termWindow?.classList.add('minimized');
+    taskTermBtn?.classList.remove('active');
+  });
+
+  winMaxBtn?.addEventListener('click', () => {
+    termWindow?.classList.toggle('maximized');
+  });
+
+  taskTermBtn?.addEventListener('click', () => {
+    if (!termWindow) return;
+    const isHidden = termWindow.classList.contains('minimized');
+    termWindow.classList.toggle('minimized', !isHidden);
+    taskTermBtn.classList.toggle('active', isHidden);
+    if (isHidden) termInput?.focus();
+  });
+
+  // Window Dragging (Desktop Only)
+  if (termTitlebar && termWindow && osScreen && window.matchMedia('(min-width: 821px)').matches) {
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    termTitlebar.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button') || termWindow.classList.contains('maximized')) return;
+      isDragging = true;
+      const winRect = termWindow.getBoundingClientRect();
+      offsetX = e.clientX - winRect.left;
+      offsetY = e.clientY - winRect.top;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const screenRect = osScreen.getBoundingClientRect();
+      let newLeft = e.clientX - screenRect.left - offsetX;
+      let newTop = e.clientY - screenRect.top - offsetY;
+
+      // Batasi agar jendela tidak keluar dari layar desktop
+      const maxLeft = screenRect.width - termWindow.offsetWidth;
+      const maxTop = screenRect.height - termWindow.offsetHeight - 46;
+      newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+      newTop = Math.max(0, Math.min(newTop, maxTop));
+
+      termWindow.style.left = `${newLeft}px`;
+      termWindow.style.top = `${newTop}px`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+  }
+
+  // Custom Neofetch HTML + Terminal Commands
+  const neofetchHTML = `
+    <div class="nf-box">
+      <pre class="nf-ascii">  
+                               _
+   / |    ___| |___ | / /___ _ | |__ 
+  / _ |  |_  / '_  ||/ /  '__|    __|
+ / ___ |  / /| | | || <  | |   | | 
+/_/    _|/___|_| |_||_|| |_|   | |
+                               | |
+
+
+  † azhkrt †</pre>
+      <ul class="nf-info">
+        <li><strong>zax@azhkrt</strong></li>
+        <li>-------------------</li>
+        <li><strong>OS:</strong> Windows 11 LTSC</li>
+        <li><strong>Host:</strong> ASUS TUF A15 (Ryzen 5 / RTX 4050)</li>
+        <li><strong>Role:</strong> IT Support & NetAdmin @ DIKA</li>
+        <li><strong>Shell:</strong> azhkrt-zsh 2.0</li>
+        <li><strong>Theme:</strong> Monochrome Sigilcore</li>
+        <li class="nf-swatches">
+          <span style="background:#ffffff"></span>
+          <span style="background:#a3a3a3"></span>
+          <span style="background:#525252"></span>
+          <span style="background:#262626"></span>
+          <span style="background:#4ade80"></span>
+        </li>
+      </ul>
+    </div>
+  `;
+
   const commands = {
-    help: 'Commands: <span class="term-cmd">whoami</span>, <span class="term-cmd">neofetch</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">socials</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>, <span class="term-cmd">exit</span>',
-    whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer.',
-    neofetch: 'OS: Windows 11 LTSC | Host: ASUS TUF A15 | Shell: azhkrt-web 1.0 | Vibe: Monochrome / Sigilcore',
+    help: 'Commands: <span class="term-cmd">neofetch</span>, <span class="term-cmd">whoami</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">projects</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">files</span>, <span class="term-cmd">firefox</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>',
+    neofetch: neofetchHTML,
+    whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer. 18 Years Old born at 04 Nov 2008, Single, Yandere, Attachment Issues, Crazy asf, Have an obsession towards someone, can get jealous easily and possessive, and can be clingy. Likes: Visual Novels, Manga, Simulation Games. Loves Maidcore, Digicore, Shoegaze, Alt Rock, instrumental, etc.',
     skills: 'Infra: Active Directory, LAN/WLAN, Windows Server/LTSC | Web: HTML, CSS, Vanilla JS, Laravel, Git',
-    socials: 'GitHub: github.com/azhkrt — check the right dock or footer for direct links.',
+    projects: '1. Cloud 9 Web App (Laravel) | 2. azhkrt.github.io (Monochrome Sigilcore Portfolio)',
     weather: () => `Jakarta: ${weatherEl?.textContent.trim() || 'Checking weather...'}`,
+    files: () => { openGitHubRepo(); return 'Opening GitHub repositories...'; },
+    firefox: () => { openBlankFirefox(); return 'Launching new blank Firefox tab...'; },
     bgm: () => { bgmToggle?.click(); return 'Toggling background audio...'; }
   };
 
-  function toggleTerminal(show) {
-    if (!termModal) return;
-    termModal.classList.toggle('open', show);
-    if (show && termInput) setTimeout(() => termInput.focus(), 80);
+  function runTerminalCommand(raw) {
+    if (!raw || !termBody) return;
+    const cmd = raw.toLowerCase();
+    termBody.innerHTML += `<div><span class="term-prompt">zax@azhkrt:~$</span> ${raw}</div>`;
+
+    if (cmd === 'clear') {
+      termBody.innerHTML = '';
+    } else if (commands[cmd]) {
+      const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
+      termBody.innerHTML += `<div class="term-muted">${output}</div>`;
+    } else {
+      termBody.innerHTML += `<div class="term-muted">zsh: command not found: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
+    }
+
+    termBody.scrollTop = termBody.scrollHeight;
   }
 
-  if (termOpenBtn) {
-    termOpenBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      toggleTerminal(true);
-    });
-  }
+  // Otomatis tampilkan neofetch saat halaman pertama kali dibuka
+  runTerminalCommand('neofetch');
 
-  if (termCloseBtn) {
-    termCloseBtn.addEventListener('click', () => toggleTerminal(false));
-  }
-
-  if (termModal) {
-    termModal.addEventListener('click', (e) => {
-      if (e.target === termModal) toggleTerminal(false);
-    });
-  }
-
-  if (termBody && termInput) {
-    termBody.addEventListener('click', () => termInput.focus());
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') toggleTerminal(false);
+  termForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const raw = termInput.value.trim();
+    if (!raw) return;
+    runTerminalCommand(raw);
+    termInput.value = '';
   });
 
-  if (termForm && termInput && termBody) {
-    termForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const raw = termInput.value.trim();
-      if (!raw) return;
-
-      const cmd = raw.toLowerCase();
-      termBody.innerHTML += `<div><span class="term-prompt">$</span> ${raw}</div>`;
-
-      if (cmd === 'clear') {
-        termBody.innerHTML = '';
-      } else if (cmd === 'exit') {
-        toggleTerminal(false);
-      } else if (commands[cmd]) {
-        const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
-        termBody.innerHTML += `<div class="term-muted">${output}</div>`;
-      } else {
-        termBody.innerHTML += `<div class="term-muted">command not found: ${raw}. Type <span class="term-cmd">help</span>.</div>`;
-      }
-
-      termInput.value = '';
-      termBody.scrollTop = termBody.scrollHeight;
+  cmdChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const cmd = chip.getAttribute('data-cmd');
+      if (cmd) runTerminalCommand(cmd);
     });
-  }
-
+  });
+  
   // =========================================
   // 8. SUBTLE SCROLL REVEAL
   // =========================================
@@ -367,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. REALTIME JAKARTA CLOCK & WEATHER
   // =========================================
   const clockEl = document.getElementById('jktClock');
-
+  
   function updateJakartaClock() {
     if (!clockEl) return;
     const now = new Date();
@@ -379,6 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hour12: false
     }).format(now);
     clockEl.textContent = `${formatted} WIB`;
+    const trayClock = document.getElementById('osTrayClock'); if (trayClock) trayClock.textContent = formatted + ' WIB';
   }
 
   updateJakartaClock();
@@ -441,6 +574,8 @@ document.addEventListener('DOMContentLoaded', () => {
         weatherHTML = `<i class="fas fa-cloud"></i> 30°C JKT`;
       }
     }
+
+    
 
     weatherEl.innerHTML = weatherHTML;
     try {
