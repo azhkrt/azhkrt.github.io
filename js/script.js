@@ -337,6 +337,22 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
     window.open('https://www.instagram.com/azhkrt_/', '_blank');
     startMenu?.classList.remove('open');
   }
+
+      function openLinkedIn() {
+    window.open('https://www.linkedin.com/in/jxki-undefined/', '_blank');
+    startMenu?.classList.remove('open');
+  }
+
+      function openDiscord() {
+    window.open('https://ptb.discord.com/users/1494009864228438268', '_blank');
+    startMenu?.classList.remove('open');
+  }
+
+      function openblankFirefox() {
+    window.open('mailto:ahmadzakifaturahman@gmail.com', '_blank');
+    startMenu?.classList.remove('open');
+  }
+
   function openTerminalApp() {
     if (!termWindow) return;
     termWindow.classList.remove('minimized');
@@ -357,6 +373,14 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
 
   document.getElementById('iconInstagram')?.addEventListener('click', openInstagram);
   document.getElementById('menuInstagram')?.addEventListener('click', openInstagram);
+
+  document.getElementById('iconLinkedIn')?.addEventListener('click', openLinkedIn);
+  document.getElementById('menuLinkedIn')?.addEventListener('click', openLinkedIn);
+
+  document.getElementById('iconDiscord')?.addEventListener('click', openDiscord);
+  document.getElementById('menuDiscord')?.addEventListener('click', openDiscord);
+
+  document.getElementById('iconMail')?.addEventListener('click', openblankFirefox);
 
   document.getElementById('iconTerm')?.addEventListener('click', openTerminalApp);
   document.getElementById('menuTerm')?.addEventListener('click', openTerminalApp);
@@ -459,9 +483,9 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
         <li>-------------------</li>
         <li><strong>OS:</strong> Windows 11 LTSC</li>
         <li><strong>Host:</strong> ASUS TUF A15 (Ryzen 5 / RTX 4050)</li>
-        <li><strong>Role:</strong> IT Support & NetAdmin @ DIKA</li>
+        <li><strong>Environment:</strong> Development & Testing</li>
         <li><strong>Shell:</strong> azhkrt-zsh 2.0</li>
-        <li><strong>Theme:</strong> Monochrome Sigilcore</li>
+        <li><strong>Theme:</strong> Cathryzel</li>
         <li class="nf-swatches">
           <span style="background:#ffffff"></span>
           <span style="background:#a3a3a3"></span>
@@ -518,6 +542,156 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
       const cmd = chip.getAttribute('data-cmd');
       if (cmd) runTerminalCommand(cmd);
     });
+
+    // =========================================
+  // 10. SYSTEM SETTINGS APP (START MENU)
+  // =========================================
+  const settingsWindow = document.getElementById('settingsWindow');
+  const settingsTitlebar = document.getElementById('settingsTitlebar');
+  const settingsCloseBtn = document.getElementById('settingsCloseBtn');
+  const taskSettingsBtn = document.getElementById('taskSettingsBtn');
+  const menuSettings = document.getElementById('menuSettings');
+
+  const themeOpts = document.querySelectorAll('.theme-opt');
+  const optSigils = document.getElementById('optSigils');
+  const optOpacity = document.getElementById('optOpacity');
+  const optOpacityVal = document.getElementById('optOpacityVal');
+  const optMotion = document.getElementById('optMotion');
+  const resetSettingsBtn = document.getElementById('resetSettingsBtn');
+
+  const defaultSettings = {
+    theme: 'dark',
+    sigils: true,
+    opacity: 48,
+    motion: true
+  };
+
+  let currentSettings = { ...defaultSettings };
+  try {
+    const saved = JSON.parse(localStorage.getItem('azhkrt_os_settings'));
+    if (saved) currentSettings = { ...defaultSettings, ...saved };
+  } catch (e) {}
+
+  function applySettings(cfg) {
+    // 1. Light / Dark Mode
+    document.body.classList.toggle('light-mode', cfg.theme === 'light');
+    themeOpts.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-theme') === cfg.theme);
+    });
+
+    // 2. Sigilcore Side Rails
+    document.body.classList.toggle('no-sigils', !cfg.sigils);
+    if (optSigils) optSigils.checked = cfg.sigils;
+
+    // 3. Terminal Transparency
+    if (termWindow) {
+      termWindow.style.background = `rgba(14, 14, 14, ${(cfg.opacity / 100).toFixed(2)})`;
+    }
+    if (optOpacity) optOpacity.value = cfg.opacity;
+    if (optOpacityVal) optOpacityVal.textContent = `${cfg.opacity}%`;
+
+    // 4. Animations & Physics
+    document.body.classList.toggle('reduce-motion', !cfg.motion);
+    if (optMotion) optMotion.checked = cfg.motion;
+
+    try {
+      localStorage.setItem('azhkrt_os_settings', JSON.stringify(cfg));
+    } catch (e) {}
+  }
+
+  applySettings(currentSettings);
+
+  function openSettingsApp() {
+    if (!settingsWindow) return;
+    settingsWindow.classList.remove('minimized');
+    settingsWindow.style.zIndex = '22';
+    if (termWindow) termWindow.style.zIndex = '10';
+    taskSettingsBtn?.classList.remove('hidden');
+    taskSettingsBtn?.classList.add('active');
+    startMenu?.classList.remove('open');
+  }
+
+  function closeSettingsApp() {
+    settingsWindow?.classList.add('minimized');
+    taskSettingsBtn?.classList.add('hidden');
+    taskSettingsBtn?.classList.remove('active');
+  }
+
+  menuSettings?.addEventListener('click', openSettingsApp);
+  settingsCloseBtn?.addEventListener('click', closeSettingsApp);
+  taskSettingsBtn?.addEventListener('click', () => {
+    if (!settingsWindow) return;
+    const isHidden = settingsWindow.classList.contains('minimized');
+    settingsWindow.classList.toggle('minimized', !isHidden);
+    taskSettingsBtn.classList.toggle('active', isHidden);
+  });
+
+  // Fokus layer jendela saat diklik
+  termWindow?.addEventListener('mousedown', () => {
+    termWindow.style.zIndex = '20';
+    if (settingsWindow) settingsWindow.style.zIndex = '15';
+  });
+
+  settingsWindow?.addEventListener('mousedown', () => {
+    settingsWindow.style.zIndex = '20';
+    if (termWindow) termWindow.style.zIndex = '15';
+  });
+
+  // Drag jendela Settings (Desktop Only)
+  if (settingsTitlebar && settingsWindow && osScreen && window.matchMedia('(min-width: 821px)').matches) {
+    let dragSet = false;
+    let setOffX = 0;
+    let setOffY = 0;
+
+    settingsTitlebar.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button')) return;
+      dragSet = true;
+      const rect = settingsWindow.getBoundingClientRect();
+      setOffX = e.clientX - rect.left;
+      setOffY = e.clientY - rect.top;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!dragSet) return;
+      const screenRect = osScreen.getBoundingClientRect();
+      let left = e.clientX - screenRect.left - setOffX;
+      let top = e.clientY - screenRect.top - setOffY;
+      left = Math.max(0, Math.min(left, screenRect.width - settingsWindow.offsetWidth));
+      top = Math.max(0, Math.min(top, screenRect.height - settingsWindow.offsetHeight - 46));
+      settingsWindow.style.left = `${left}px`;
+      settingsWindow.style.top = `${top}px`;
+    });
+
+    window.addEventListener('mouseup', () => { dragSet = false; });
+  }
+
+  // Event Listeners tiap opsi Settings
+  themeOpts.forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentSettings.theme = btn.getAttribute('data-theme');
+      applySettings(currentSettings);
+    });
+  });
+
+  optSigils?.addEventListener('change', (e) => {
+    currentSettings.sigils = e.target.checked;
+    applySettings(currentSettings);
+  });
+
+  optOpacity?.addEventListener('input', (e) => {
+    currentSettings.opacity = Number(e.target.value);
+    applySettings(currentSettings);
+  });
+
+  optMotion?.addEventListener('change', (e) => {
+    currentSettings.motion = e.target.checked;
+    applySettings(currentSettings);
+  });
+
+  resetSettingsBtn?.addEventListener('click', () => {
+    currentSettings = { ...defaultSettings };
+    applySettings(currentSettings);
+  });
   });
   
   // =========================================

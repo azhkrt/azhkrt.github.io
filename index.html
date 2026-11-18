@@ -94,7 +94,7 @@
         </div>
 
         <h1>Hi, I'm Zax.<p>he/him 18y/o Indonesian</p></h1>
-        <p>IT Support Specialist & Web Tinkerer — building clean interfaces and experimenting with systems.</p>
+        <p>IT Support Specialist & Web Tinkerer. Building clean interfaces and experimenting with systems.</p>
         <a href="#projects" class="btn-primary">See Projects</a>
       </div>
     </section>
@@ -231,8 +231,8 @@
       <!-- Desktop Shortcuts (Top Left) -->
       <div class="desktop-icons">
         <button type="button" class="desk-icon" id="iconFiles" title="Open GitHub Repositories">
-          <div class="icon-box"><i class="fas fa-folder-open"></i></div>
-          <span>Files</span>
+          <div class="icon-box"><i class="fab fa-github"></i></div>
+          <span>Github</span>
         </button>
 
         <button type="button" class="desk-icon" id="iconTerm" title="Open / Focus Terminal">
@@ -255,9 +255,19 @@
           <span>Instagram</span>
         </button>
 
-            <button type="button" class="desk-icon" id="iconInstagram" title="Open Instagram">
-          <div class="icon-box"><i class="fab fa-instagram"></i></div>
-          <span>Instagram</span>
+        <button type="button" class="desk-icon" id="iconLinkedIn" title="Open LinkedIn">
+          <div class="icon-box"><i class="fab fa-linkedin"></i></div>
+          <span>LinkedIn</span>
+        </button>
+
+        <button type="button" class="desk-icon" id="iconDiscord" title="Open Discord">
+          <div class="icon-box"><i class="fab fa-discord"></i></div>
+          <span>Discord</span>
+        </button>
+
+        <button type="button" class="desk-icon" id="iconMail" title="Open Mail">
+          <div class="icon-box"><i class="fas fa-envelope"></i></div>
+          <span>Mail</span>
         </button>
       </div>
       <!-- Draggable Terminal Window -->
@@ -320,15 +330,15 @@
               <span>Run shell &amp; neofetch</span>
             </div>
           </button>
+        </div>
 
-          <button type="button" class="start-item" id="menuPinterest">
-            <i class="fab fa-pinterest"></i>
+        <button type="button" class="start-item" id="menuSettings">
+            <i class="fas fa-sliders-h"></i>
             <div>
-              <strong>Pinterest</strong>
-              <span>Open azhkrt Pinterest account</span>
+              <strong>Settings</strong>
+              <span>Theme, transparency & display</span>
             </div>
           </button>
-        </div>
 
         <div class="start-footer">
           <a href="#home"><i class="fas fa-arrow-up"></i> Top</a>
@@ -346,10 +356,83 @@
           <button type="button" class="task-pill active" id="taskTermBtn">
             <i class="fas fa-terminal"></i> Terminal
           </button>
+
+          <button type="button" class="task-pill hidden" id="taskSettingsBtn">
+            <i class="fas fa-sliders-h"></i> Settings
+          </button>
         </div>
 
         <div class="task-tray">
           <span id="osTrayClock">WIB</span>
+        </div>
+      </div>
+      
+      <!-- Draggable Settings Window -->
+      <div class="os-window settings-window minimized" id="settingsWindow">
+        <div class="win-titlebar" id="settingsTitlebar">
+          <div class="win-title">
+            <i class="fas fa-sliders-h"></i>
+            <span>System Settings — azhkrtOS</span>
+          </div>
+          <div class="win-controls">
+            <button type="button" class="win-btn win-close" id="settingsCloseBtn" title="Close"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+
+        <div class="settings-body">
+          <!-- 1. Light / Dark Mode -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Appearance Theme</strong>
+              <span>Change web view between Dark & Light Mode</span>
+            </div>
+            <div class="theme-switcher">
+              <button type="button" class="theme-opt active" data-theme="dark"><i class="fas fa-moon"></i> Dark</button>
+              <button type="button" class="theme-opt" data-theme="light"><i class="fas fa-sun"></i> Light</button>
+            </div>
+          </div>
+
+          <!-- 2. Sigilcore Side Rails -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Sigilcore Side Rails</strong>
+              <span>Line ornaments and symbols floating on the side of the screen</span>
+            </div>
+            <label class="os-switch">
+              <input type="checkbox" id="optSigils" checked />
+              <span class="os-slider"></span>
+            </label>
+          </div>
+
+          <!-- 3. Terminal Opacity -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Terminal Opacity</strong>
+              <span>Adjust the transparency level of the terminal window</span>
+            </div>
+            <div class="range-wrap">
+              <input type="range" id="optOpacity" min="25" max="95" value="48" />
+              <span id="optOpacityVal">48%</span>
+            </div>
+          </div>
+
+          <!-- 4. Animations -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Animations & Physics</strong>
+              <span>3D tilt effects, scroll recoil, and background animations</span>
+            </div>
+            <label class="os-switch">
+              <input type="checkbox" id="optMotion" checked />
+              <span class="os-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-actions">
+            <button type="button" class="reset-settings-btn" id="resetSettingsBtn">
+              <i class="fas fa-rotate-left"></i> Reset Default
+            </button>
+          </div>
         </div>
       </div>
 
