@@ -498,7 +498,7 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
   `;
 
   const commands = {
-    help: 'Commands: <span class="term-cmd">neofetch</span>, <span class="term-cmd">whoami</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">projects</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">files</span>, <span class="term-cmd">firefox</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>',
+    help: 'Commands: <span class="term-cmd">neofetch</span>, <span class="term-cmd">whoami</span>, <span class="term-cmd">skills</span>, <span class="term-cmd">projects</span>, <span class="term-cmd">weather</span>, <span class="term-cmd">files</span>, <span class="term-cmd">bgm</span>, <span class="term-cmd">clear</span>',
     neofetch: neofetchHTML,
     whoami: 'Zax (azhkrt) — IT Support & Network Administration @ DIKA. Web tinkerer & visual novel enjoyer. 18 Years Old born at 04 Nov 2008, Single, Yandere, Attachment Issues, Crazy asf, Have an obsession towards someone, can get jealous easily and possessive, and can be clingy. Likes: Visual Novels, Manga, Simulation Games. Loves Maidcore, Digicore, Shoegaze, Alt Rock, instrumental, etc.',
     skills: 'Infra: Active Directory, LAN/WLAN, Windows Server/LTSC | Web: HTML, CSS, Vanilla JS, Laravel, Git',
