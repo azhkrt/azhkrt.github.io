@@ -498,7 +498,7 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
         <li>-------------------</li>
         <li><strong>OS:</strong> Windows 11 LTSC</li>
         <li><strong>Host:</strong> ASUS TUF A15 (Ryzen 5 / RTX 4050)</li>
-        <li><strong>Environment:</strong> Development & Testing</li>
+        <li><strong>Environment:</strong> Deadland</li>
         <li><strong>Shell:</strong> azhkrt-zsh 2.0</li>
         <li><strong>Theme:</strong> Cathryzel</li>
         <li class="nf-swatches">
