@@ -524,7 +524,7 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
     bgm: () => { bgmToggle?.click(); return 'Toggling background audio...'; }
   };
 
-  function runTerminalCommand(raw) {
+function runTerminalCommand(raw, autoScroll = true) {
     if (!raw || !termBody) return;
     const cmd = raw.toLowerCase();
     termBody.innerHTML += `<div><span class="term-prompt">zax@azhkrt:~$</span> ${raw}</div>`;
@@ -535,14 +535,18 @@ const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
       const output = typeof commands[cmd] === 'function' ? commands[cmd]() : commands[cmd];
       termBody.innerHTML += `<div class="term-muted">${output}</div>`;
     } else {
-      termBody.innerHTML += `<div class="term-muted">zsh: command not found: ${raw}. Type <span class="term-cmd">help</span>.</div>`;
+      termBody.innerHTML += `<div class="term-muted">zsh: command not found: ${raw}. Ketik <span class="term-cmd">help</span>.</div>`;
     }
 
-    termBody.scrollTop = termBody.scrollHeight;
+    if (autoScroll) {
+      termBody.scrollTop = termBody.scrollHeight;
+    } else {
+      termBody.scrollTop = 0;
+    }
   }
 
-  // Otomatis tampilkan neofetch saat halaman pertama kali dibuka
-  runTerminalCommand('neofetch');
+  // Otomatis tampilkan neofetch di posisi paling atas saat halaman pertama dibuka
+  runTerminalCommand('neofetch', false);
 
   termForm?.addEventListener('submit', (e) => {
     e.preventDefault();

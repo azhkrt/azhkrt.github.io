@@ -1648,6 +1648,10 @@ footer[id] {
     padding: 24px 10px 44px;
   }
 
+  .nf-box {
+    gap: 10px;
+  }
+  
   .desktop-bezel {
     padding: 6px;
     border-radius: 16px;
